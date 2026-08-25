@@ -1,11 +1,27 @@
+import React, { useState } from "react";
 import {
   BookOpen, Award, Sparkles, Video, CheckCircle2,
-  ExternalLink, GraduationCap, ShieldCheck, FileText, Users
+  ExternalLink, GraduationCap, ShieldCheck, FileText, Users, Copy, Check, GitFork
 } from "lucide-react";
 import { SectionHeader } from "../components.jsx";
 import { CANONICAL_LABELS, LABEL_COLORS } from "../constants.js";
 
 export default function AboutResearch() {
+  const [copied, setCopied] = useState(false);
+
+  const bibtexCode = `@misc{kokbisa_discourse_2026,
+  title  = {Indonesian Public Discourse Corpus: Deep Learning Classification of Science Engagement},
+  author = {IPDC Research Project},
+  year   = {2026},
+  url    = {https://github.com/farrelfz/kok-bisa-physics-discourse-analytics}
+}`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(bibtexCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       {/* Header */}
@@ -125,64 +141,86 @@ export default function AboutResearch() {
         </div>
       </div>
 
-      {/* ── Copyright, License & Academic Citation ── */}
-      <div className="card" style={{ padding: "24px 28px", border: "1px solid var(--border)", background: "var(--surface)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <ShieldCheck size={22} style={{ color: "var(--brand)" }} />
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text1)", letterSpacing: "-0.02em" }}>
-                Copyright, Licensing &amp; Attribution
-              </div>
-              <div style={{ fontSize: 12, color: "var(--text3)" }}>
-                Open-source academic research under the permissive MIT License
-              </div>
-            </div>
+      {/* ── Suggested Academic Citation (BibTeX) ── */}
+      <div className="card">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <FileText size={18} style={{ color: "var(--brand)" }} />
+            <span style={{ fontSize: 14.5, fontWeight: 700, color: "var(--text1)" }}>
+              Suggested Academic Citation (BibTeX)
+            </span>
           </div>
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm"
+            onClick={handleCopy}
+            style={{ display: "flex", alignItems: "center", gap: 6 }}
+          >
+            {copied ? <Check size={14} style={{ color: "var(--success)" }} /> : <Copy size={14} />}
+            {copied ? "Copied to Clipboard!" : "Copy BibTeX"}
+          </button>
+        </div>
 
-          <span className="tag tag-brand" style={{ fontSize: 11.5, fontWeight: 700 }}>
-            MIT License · Open Science
+        <pre style={{
+          fontSize: 12,
+          fontFamily: "JetBrains Mono",
+          color: "var(--text1)",
+          background: "var(--bg-subtle)",
+          padding: "14px 16px",
+          borderRadius: "var(--radius-sm)",
+          border: "1px solid var(--border)",
+          overflowX: "auto",
+          lineHeight: 1.5,
+          margin: 0,
+        }}>
+{bibtexCode}
+        </pre>
+      </div>
+
+      {/* ── Copyright & Licensing Notice ── */}
+      <div className="card">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <ShieldCheck size={18} style={{ color: "#22C55E" }} />
+            <span style={{ fontSize: 14.5, fontWeight: 700, color: "var(--text1)" }}>
+              Copyright, Licensing & Attribution
+            </span>
+          </div>
+          <span className="tag tag-success" style={{ fontSize: 11, fontWeight: 700 }}>
+            MIT License · Open Research
           </span>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10, fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
-            <p style={{ margin: 0 }}>
-              <strong>Indonesian Public Discourse Corpus (IPDC)</strong> is developed as an academic research initiative to advance computational linguistics and public science engagement analytics in the Indonesian language.
-            </p>
-            <p style={{ margin: 0 }}>
-              <strong>Copyright Notice:</strong><br />
-              © 2026 <em>Indonesian Public Discourse Corpus Research Project</em>. All rights reserved. The software and analytical dashboard are open-source under the <strong>MIT License</strong>.
-            </p>
-            <p style={{ margin: 0, fontSize: 12, color: "var(--text3)" }}>
-              All YouTube comment text assets belong to their respective original authors on YouTube and are processed under fair academic research terms. Video content and thumbnails are property of <strong>Kok Bisa?</strong> channel.
-            </p>
-          </div>
-
-          {/* BibTeX Citation Box */}
-          <div style={{ background: "var(--bg-subtle)", border: "1px solid var(--border)", borderRadius: "var(--radius-sm)", padding: "14px 16px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text3)", textTransform: "uppercase", letterSpacing: ".06em", marginBottom: 6 }}>
-              Suggested Academic Citation (BibTeX)
+        <div style={{ display: "flex", flexDirection: "column", gap: 10, fontSize: 13, color: "var(--text2)", lineHeight: 1.6 }}>
+          <p style={{ margin: 0 }}>
+            <strong>Indonesian Public Discourse Corpus (IPDC)</strong> is developed as an open-source academic research initiative to advance computational linguistics and public science engagement analytics in Indonesian digital communication.
+          </p>
+          <div style={{ padding: "12px 14px", background: "var(--bg-subtle)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+            <div style={{ fontWeight: 700, color: "var(--text1)", marginBottom: 4 }}>
+              © 2026 Indonesian Public Discourse Corpus Research Project
             </div>
-            <pre style={{
-              fontSize: 11,
-              fontFamily: "JetBrains Mono",
-              color: "var(--text1)",
-              background: "var(--surface)",
-              padding: "10px 12px",
-              borderRadius: 4,
-              border: "1px solid var(--border)",
-              overflowX: "auto",
-              lineHeight: 1.45,
-              margin: 0,
-            }}>
-{`@misc{kokbisa_discourse_2026,
-  title  = {Indonesian Public Discourse Corpus: Deep Learning Classification of Science Engagement},
-  author = {IPDC Research Project},
-  year   = {2026},
-  url    = {https://github.com/farrelfz/kok-bisa-physics-discourse-analytics}
-}`}
-            </pre>
+            <div style={{ fontSize: 12, color: "var(--text3)", lineHeight: 1.5 }}>
+              The software, analytical pipeline, and dashboard frontend are open-source and distributed under the <strong>MIT License</strong>.
+            </div>
+          </div>
+          <p style={{ margin: 0, fontSize: 12, color: "var(--text3)" }}>
+            All YouTube comment text assets belong to their respective original authors on YouTube and are analyzed under fair academic research terms. Video content and thumbnails remain the intellectual property of the <strong>Kok Bisa?</strong> channel.
+          </p>
+
+          <div style={{ marginTop: 8, paddingTop: 12, borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+            <span style={{ fontSize: 12, color: "var(--text3)" }}>
+              Source repository & open dataset available on GitHub
+            </span>
+            <a
+              href="https://github.com/farrelfz/kok-bisa-physics-discourse-analytics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary btn-sm"
+              style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              <ExternalLink size={13} />
+              <span>View GitHub Repository</span>
+            </a>
           </div>
         </div>
       </div>

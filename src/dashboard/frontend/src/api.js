@@ -309,6 +309,8 @@ export const api = {
     req("/analytics/confidence-overview", {}, () => ({
       mean_confidence: 0.9412,
       mean_margin: 0.892,
+      max_confidence: 0.9998,
+      min_confidence: 0.3540,
       high_confidence_pct: 85.0,
       ambiguous_pct: 4.8,
       distribution_bins: [
