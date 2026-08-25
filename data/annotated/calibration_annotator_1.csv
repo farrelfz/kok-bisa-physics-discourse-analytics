@@ -1,0 +1,132 @@
+﻿sample_id,comment_id,video_id,parent_id,text,discourse_label,confidence,notes
+CALIB_001,UgxqF6laBteOv_yRLc54AaABAg,5Zi4qGpGop4,,Bagaimana keadaan bumi jika nabi adam tidak di turunkan k bumi?,Question,High,Tulus bertanya sains
+CALIB_002,UgjkR1w89evQF3gCoAEC,iyJeozHhvJI,,"Bang kobi apa itu persekusi #request
+",Suggestion,High,Request topik persekusi
+CALIB_003,UghSjqjL29hNQHgCoAEC,iq0yOkj3d28,,sorry gan.. gw mau tanya dong. gw kmrn liat d youtube konspirasi bumi datar itu hoax apa sesat apa gmn ya?,Question,High,Mencari klarifikasi hoax bumi datar
+CALIB_004,UgySYoDvL2j9l2oYQ054AaABAg.8xgVGSY5FpP96ycg1RK6xU,t5SaFgSaM_M,UgySYoDvL2j9l2oYQ054AaABAg,Setuju banget bang,Agreement,High,Afirmasi persetujuan eksplisit
+CALIB_005,UgxZXwRVZb3vAcJrqIF4AaABAg.8tcHO5VU63h8tdjxT4h2BA,impJiSfof9E,UgxZXwRVZb3vAcJrqIF4AaABAg,Bener banget boy Hahaa,Agreement,High,Afirmasi persetujuan eksplisit
+CALIB_006,UghwWoIf1oAy63gCoAEC,YljSXjd4lnk,,2:34 itu yang tengah bukan jet tapi turbofan,Correction,High,Ralat faktual menit 2:34 turbofan
+CALIB_007,UgzH6m5XNBi22i7iRvB4AaABAg,QK01ROEqJ1A,,"Dulu... suka banget kalo ada yang bahas soal antariksa. Tapi setelah mengenal FE, cuma bisa bilang oh aja. Wallahualam.",Experience,Medium,Menceritakan perubahan pandangan masa lalu
+CALIB_008,Ughmg5jUO7UFi3gCoAEC,2EVv7dmTFik,,kenapa definisi jihad berubah? Kalo dulu berjuang di jalan allah. Kalo sekarang aksi terrorisme?,Question,High,Pertanyaan kritis definisi
+CALIB_009,Ugwe0ZmKTC17tXI-Ck94AaABAg,dghOCZmSEUQ,,Kalo udah mimpi kita suka lupa kenapa??,Question,High,Pertanyaan tulus sains
+CALIB_010,UgxA46JuE55_o_IB96d4AaABAg,qis44fqpuAU,,Kok bisa Api ASIAN GAMES disebut sbg Api Abadi? Emang nya ga bisa mati? Tolong jelaskan dong.. tanpa ada gambar baksonya ya,Question,High,Pertanyaan tulus api abadi
+CALIB_011,UgzXCeq3U-CmGjcVDVh4AaABAg.9RFus7knc0i9RPv6jwd2_g,iq0yOkj3d28,UgzXCeq3U-CmGjcVDVh4AaABAg,"@heheheboy1425 nah itu gua gak suka gravitasi. Bumi berputar tapi air dan seisi yang dipermukaan bumi gak tumpah katanya ada gravitasi? Sedangkan heli kopter dengan kekuatan baling"" bisa naik keatas gravitasi gak bisa narik. Makanya kalo menurut gue gravitasi ga ada",Disagreement,High,Sanggahan teori gravitasi
+CALIB_012,UgwV_EA-RZYgfDA35ux4AaABAg,21seK8tKSYI,,Menit 1.10 suara vacumnya dark seer anjir wwkwwk . Anak dota pasti tau,Opinion,Medium,Pengamatan audio game menit 1:10
+CALIB_013,Ugx9jUGIuW5u2qui0dZ4AaABAg.8tfRn1yWZnJ8zxe6v7Zqpk,impJiSfof9E,Ugx9jUGIuW5u2qui0dZ4AaABAg,berati flet ert itu bneran atau hoax jg sih....ktanya jgn prcaya nasa krna nnti jd kapir..,Question,Medium,Pertanyaan klarifikasi FE
+CALIB_014,UgzmROOkK7wcbS2ol8J4AaABAg,QK01ROEqJ1A,,"gabisa ngomong apa apa lagi (speechless), gimana caranya channel ini bikin konten kaya gini? pasti butuh ilmu yang banyak. wajar jadi trending, malah harusnya jadi trending nomer 1. WAJIB DI SUBSCRIBE",Praise,High,Pujian dan apresiasi channel
+CALIB_015,Ugw3WS5wXhHqa9vqcBd4AaABAg.9u7DC58PJ_lALHQ12_T97n,YxgOhIQJX3Q,Ugw3WS5wXhHqa9vqcBd4AaABAg,karena udh ikonik dari zaman Majapahit.dulu lucu sekarang udh usang menurut saya,Opinion,High,Evaluasi pandangan pribadi
+CALIB_016,Ugwmnqip8Sn16DXPZUF4AaABAg,qis44fqpuAU,,"Jika diperkenankan mencoba untuk pertama kali, tentu masa depan terlebih dahulu, kenapa? Karena untuk melihat pengaruh baik dan buruk dari adanya mesin waktu tersebut. Jika memang mesin waktu banyak memberi manfaat, maka untuk selanjutnya layak untuk dikembangkan. Apabila lebih banyak memberi dampak buruk dapat segera dimusnahkan.",Opinion,High,Spekulasi jawaban mesin waktu
+CALIB_017,Ugw9peQn9XyejP7FJXB4AaABAg,21seK8tKSYI,,"DATAR kek, BULAT kek
+Serah dah gak percaya 22 nya, walau pasti salahsatunya.",Disagreement,High,Penolakan terhadap kedua teori
+CALIB_018,UgiW4OP3MJEB1HgCoAEC.8SrdVCs_wiJ8uDJXEvScYr,JRJ1ngbUe6A,UgiW4OP3MJEB1HgCoAEC,Elu tolol gak percaya satelit gimana indonesia mau maju kalo generasi penerus bangsa di bodohi oleh teori flat earth,Disagreement,High,Sanggahan keras penganut FE
+CALIB_019,UgzjFCPWc_uE4j75m7F4AaABAg,YxgOhIQJX3Q,,"Mau tanya dong.. 
+Kan kenapa kalau manusia gak suka sama suaranya sendiri udah di jawab.. Terus lanjut 
+Kenapa manusia suka sama bau kentut sendiri?",Question,High,Pertanyaan ilmiah baru
+CALIB_020,UgyjdgSDWk5NNbDY8nJ4AaABAg,QK01ROEqJ1A,,"Channel gini bermanfaat harusnya trending 👍 dripda channel sebelah bahas2 horor,hari gini adeh 😅😅🤣😂",Praise,High,Apresiasi kebermanfaatan konten
+CALIB_021,UgwIpO9Ss6xA_bGqrPh4AaABAg,YxgOhIQJX3Q,,"Request min, apa jadinya bumi tanpa binatang?",Suggestion,High,Request topik
+CALIB_022,Ugj_k_bvKzVaeHgCoAEC,FMNRItiR6ZA,,kenapa tahu bulat?,Question,High,Pertanyaan rasa ingin tahu
+CALIB_023,UgwW4pRzAci6rkOHAeF4AaABAg,YxgOhIQJX3Q,,"Videonya bagus, tapi saran seharusnya pakai satuan kaki saja (feet) untuk bahasan perihal ketinggian, jangan km.",Suggestion,High,Saran teknis satuan feet
+CALIB_024,UgyYJgc1CG_3mz-5B0V4AaABAg,21seK8tKSYI,,"Coba kalo lo hilangkan gravitasi, jadi pasti masuk akal kalo bumi itu datar",Disagreement,High,Argumen sanggahan gravitasi
+CALIB_025,Ugx7LiPBdqFxZ-1UsSN4AaABAg.9Jc62RDvVb29Jc68breOcH,T8g_hUpx9VU,Ugx7LiPBdqFxZ-1UsSN4AaABAg,"Contoh nya kl misalkan ada meme di sosmed kek ""kebiasaan gw waktu kecil"" trus entar ada yg bales dulu gw juga gitu dan lain²",Opinion,Medium,Menjelaskan analogi meme
+CALIB_026,UgwBNtO3l2Ogf0yimel4AaABAg,t5SaFgSaM_M,,"Kenapa bang kok bisa suka banget sama Bakso
+kenapa gitu yak ?
+Wkwk",Question,High,Pertanyaan santai bakso
+CALIB_027,Ugz77wD7JOMizDQbp754AaABAg.8zYVkwxewWM9Wa3tKcaSc6,QK01ROEqJ1A,Ugz77wD7JOMizDQbp754AaABAg,"@arbinakson7113 Kalau menurut lu penjelasan gw tentang Yesus sebagai Allah dan manusia kurang membantu. 
+
+Coba sebut.. Dimana letak salahnya. 
+
+Gw pengen tau lu beneran menemukan kesalahan atau hanya ngomong ""Itu gak masuk akal"" sebagai jurus terakhir seperti yang lain 😁",Disagreement,High,Tantangan debat balasan
+CALIB_028,UgxgEU3YvxlMhCehnJh4AaABAg.8pQBmZY3rKJ8zk6SkC4IZY,dghOCZmSEUQ,UgxgEU3YvxlMhCehnJh4AaABAg,Di agama saya yg sudah ada jauh sblm agama Islam muncul jg ada dijelaskan ttg alam semesta ini dan nyambung2 aja. (Cmn blg tidak ngajak berantem),Opinion,Medium,Pandangan perbandingan agama
+CALIB_029,Ugi9Knz5EvymvHgCoAEC,PEbhbW4rgy4,,"+Kok Bisa?, saya mau tanya, Kenapa Di Ruang angkasa sangat Gelap?/ Hitam? Kenapa Tidak putih saja? Dan Berapa Luas angkasa Kira Kira?",Question,High,Pertanyaan sains ruang angkasa
+CALIB_030,UgyU_DM2SZzJcs-MjsF4AaABAg.9LWejc7axRY9LtZGmYi80C,JRJ1ngbUe6A,UgyU_DM2SZzJcs-MjsF4AaABAg,Langit bisa ditembus gak percaya?buktinya itu apa satelit?ngambang diluar angkasa,Disagreement,High,Sanggahan retoris membela sains
+CALIB_031,Ugi6t2Krl_qgCHgCoAEC,PEbhbW4rgy4,,"VIDEO nya bagus min , 😁😁 , kenapa nama channelnya ""ko bisa?"" kenapa gk ""ko gitu?"" 😴😴",Question,Medium,Praise + Question nama channel -> Question
+CALIB_032,UgycGA7R6ty63suv71B4AaABAg.A0bP-o9YwP_A1bn9-AhS04,T9ttUfGG7EE,UgycGA7R6ty63suv71B4AaABAg,"​@syamdism1331 logika anda yang tidak masuk akal sepertinya anda penganut bumi datar, pelajaran buku sekolah sudah ada bahwa manusia pernah menjelajahi bulan, dan sejak dulu sudah banyak penjelasan ilmiah lainnya. Anda hanya males mencari, menyelidiki, membaca yang sudah ada faktanya.",Disagreement,High,Sanggahan argumen penganut FE
+CALIB_033,UgxNAGBUHL3BhKlkNWl4AaABAg,2EVv7dmTFik,,"Bagaimana cara pesawat luar angkasa terbang di ruang yg hampa udara??
+   Bukankah sistem kerja roket dengan mendorong udara,, trus apa yg di dorong di luar angkasa??",Question,High,Pertanyaan sistem kerja roket
+CALIB_034,UgzgygQDd0AelhpSJO94AaABAg,uA3cMFjqfaM,,bagus vidionya singkat tapi bisa belajar dari itu.dan tdk membuat kita bosan,Praise,High,Pujian video singkat bermanfaat
+CALIB_035,Ugwz7DofGmUMva4zwid4AaABAg,QK01ROEqJ1A,,Ada ujungnya di toilet rumahku alam semesta ini,Opinion,Low,Candaan ujung alam semesta
+CALIB_036,UghmqGfdZKiqFXgCoAEC,iyJeozHhvJI,,kok bisa ada manusia yang bisa lihat hantu dan juga tidak?????????????,Question,High,Pertanyaan fenomena manusia
+CALIB_037,UgyJDf0MKT20D5UC-Dh4AaABAg,qis44fqpuAU,,Kalau ada mesin waktu saya sih akan menonton space toon lagi(nostalgia),Opinion,High,Opini nostalgia mesin waktu
+CALIB_038,Ugyao70gRcMAvGb_mdt4AaABAg,qis44fqpuAU,,Kalo ada mesin waktu saya mau ke tahun 40.000,Opinion,High,Spekulasi pribadi mesin waktu
+CALIB_039,Ugg0ZdxodCKyiXgCoAEC,iq0yOkj3d28,,bang bumi itu kan bulut ... lalu mengapa kalau pesawat terbang lurus tetap memutari bumi ya .. kan dia tidak menyentuh tanah .. dan logisnya kalo dia lurus kan harusnya malah ke luar angkasa... explain dengan info grafis nya bang jadi video,Suggestion,Medium,Permintaan video penjelasan pesawat
+CALIB_040,UgwCRC2W20cqZpz4W5J4AaABAg.9EogT7DiMA59QhqOhkO7Df,21seK8tKSYI,UgwCRC2W20cqZpz4W5J4AaABAg,"@humanfuturelife2363 km bilang aku jelek? Iya intinya kan hidup makmur dan bahagia kuncinya ya disitu saja sih ,secogan cogannya km emng situ udah makmur hidupnya?. Yakalok makmur bagus, kalok ngk gimana?.",Disagreement,High,Balasan debat personal
+CALIB_041,Ugw3iKZfpf7UmxvmizF4AaABAg,21seK8tKSYI,,Masuk akal bangetttt,Agreement,High,Afirmasi persetujuan eksplisit
+CALIB_042,Ugy7yxr62r1ZoJ_PQZp4AaABAg,YxgOhIQJX3Q,,Menit 2.07 g ad kakinya😅sengaja atau g sengaja?,Correction,Medium,Ralat visual menit 2:07
+CALIB_043,UgyjVPjc6E0SiLd0S2l4AaABAg,jPyd0Xv5LfY,,"Admin Kok Bisa saya ingin bertanya, jika suatu negara mata uangnya jelek kalo di ganti oleh mata uangnya yang lebih bagus apakah ekonomi negara tersebut bakal ikut baik?",Question,High,Pertanyaan sains ekonomi
+CALIB_044,Ughxu7wHCAJ_aXgCoAEC.8MlXP_P7Oxj8MmkFICqHnO,uA3cMFjqfaM,Ughxu7wHCAJ_aXgCoAEC,"mesin waktu mungkin itk masa kedepan bisa diciptakan untuk prjalanan ke masa depan(IMO)krn adanya partikel yang melebihi kec cahaya/min=kec cahaya,,   untuk ke masa lalu menurut saya lebih susah dr ke masa depan, kalau ada yg tau caranya ke masa lalu bisa komen, mau perbaiki kesalahan :v:v",Opinion,High,Spekulasi teori mesin waktu
+CALIB_045,UgyhcXZN8Agu6MjoM1F4AaABAg,21seK8tKSYI,,Kaum fe kalo debat suka bawa bawa agama dan dalil giliran di bales sama sama pake dalil malah di katain salah tafsir + emot😁.,Disagreement,High,Kritik pola debat kaum FE
+CALIB_046,Ugz_XC037LS8Afrkjox4AaABAg,NVDIHTGVcLc,,"Mau nanya, kenapa kalo kita misal nya ke kondangan, kan suka ada radio gede2 gitu kan, lagu nya biasa nya lagu dangdut, nah kalo di putar lagu dangdut itu kenapa jantung kita terkadang berasa berdetak lebih keras dari biasa nya???",Question,High,Pertanyaan biologis jantung dan musik
+CALIB_047,UgxoT0ojFuy7BpNeEv14AaABAg,QK01ROEqJ1A,,"Mengapa Tuhan menciptakan planet2 kecil di galaxy lain yg jauh itu, manfaatnya untuk kehidupan kita apa ?",Question,High,Pertanyaan tujuan planet kecil
+CALIB_048,UgzX7SiICBD_rkoNOIh4AaABAg,t5SaFgSaM_M,,aku suka ruang angkasa 😘 tapi aku gk suka bumi di tinggalkan,Opinion,High,Ekspresi perasaan suka/tidak suka
+CALIB_049,Ugz69HlMdj6bWMCtwsl4AaABAg.9PNazBcogQ49PSEdO-J8a4,jPyd0Xv5LfY,Ugz69HlMdj6bWMCtwsl4AaABAg,"jaman sekolah gw sampe frustasii dan depresii, jdi rajin ibadah malem meratapi knapa gw jdi kya orang goblokk kalo ngmong,  pnah suatu kali pas sd gw dipaksa lomba pidato, gagap mau ngmong assalamualikumm, yawloh gw malu bgtt sampe sekarangg",Experience,High,Cerita masa sekolah dan lomba pidato
+CALIB_050,UgyEHaeXByB1i2hOIlR4AaABAg.9Ohdrt-CbxT9PedUlYs8w2,21seK8tKSYI,UgyEHaeXByB1i2hOIlR4AaABAg,@chacaas1115 kalo suka sama seseorang apakah harus bedah hatinya dulu untuk tahu jawabannya? heheh,Opinion,Medium,Candaan analogi bedah hati
+CALIB_051,UgycFskmn2Oh5RqMeRZ4AaABAg,FMNRItiR6ZA,,"Nah ini dia  channel favorit gw :
+1. Sisi Terang : Pembahasannya menarik dan isi nya berisi semua, baguss 😘 😘  😘 😘 
+2. Inspiratips : Animasi nya gampang di cerna, konten sains nya keren & cinematic abis 😍 😍  
+3. Kok Bisa : Voice over nya keren tapi topic nya bervariasi, gak boring 🥰  🥰 
+Terus bahas konten astronomi dong",Suggestion,High,Praise + Suggestion -> Suggestion
+CALIB_052,UgzPTzHqQS_e6mUT0_p4AaABAg,rloh5wZxFrU,,@Kok Bisa? Apakah Kita Bisa Membekukan Kembali Es Di Kutub Agar Tidak Cair ? #Beranibertanya,Question,High,Pertanyaan pembekuan es kutub
+CALIB_053,UgxeAvjX9u5IKy9K5yd4AaABAg,21seK8tKSYI,,"Keren aninasinya Min, bikinnya gimana pake apa ya?",Question,High,Praise + Question animasi -> Question
+CALIB_054,UgzqzjnHdJZ952qrF054AaABAg.97sQZGyjAbx98-1Xj_WEJb,21seK8tKSYI,UgzqzjnHdJZ952qrF054AaABAg,Kalo Anda benar benar seorang muslim harusnya percaya kalo bumi itu bulat,Disagreement,High,Sanggahan klaim keyakinan
+CALIB_055,UgxTzaR-P4JyDbv98054AaABAg,5Zi4qGpGop4,,"Kok bisa reaksi alergi berbeda beda ada yang bersin2, gatal2, ada yang sesak napas ,ada yang pingsan?",Question,High,Pertanyaan reaksi alergi
+CALIB_056,UgwpFa3HVDt4IqAalW54AaABAg,FMNRItiR6ZA,,"Chanel yg kaya gini sungguh bermanfaat, tapi anehnya yang hoax lebih laku.",Praise,Medium,Apresiasi channel vs hoax
+CALIB_057,Ugz0a9Wq2Q5LhjmJVyR4AaABAg,T8g_hUpx9VU,,"pernah nonton video Kok Bisa yang bahas jarak antara bumi dengan matahari yang jauhnya ga bisa dibayangin. dan kalo mau ke sana dibutuhkan waktu bertahun tahun lamanya. nah,  gimana mereka (?) bisa tau seberapa panas matahari? sedangkan untuk ke sana butuh waktu bertahun tahun....",Question,High,Pertanyaan metode ukur panas matahari
+CALIB_058,Ugw_LQ-btJdFlnwSvC94AaABAg.9b-fIAWVCJA9b4U9TTF_Lo,Beod6J0genE,Ugw_LQ-btJdFlnwSvC94AaABAg,Waktu kecil pengen jadi astronot udah gede jadi penasaran kan udah di  angkasa terus pengen ke bawah jurang tanpa dasar nya kebayang terus ::::,Experience,High,Cerita cita-cita masa kecil
+CALIB_059,UgxYsdJGOlsSyhnSU8x4AaABAg,JRJ1ngbUe6A,,Harusnya ini jadi ilmu pengetahuan tapi malah pada debat:v sedih deh sama orang2 Indon wkwk,Opinion,High,Kritik sosial terhadap perdebatan
+CALIB_060,Ugw6cJjhNA6givDtuJx4AaABAg,2EVv7dmTFik,,apakah tumbuhan bisa menyerap karbon monoksida/asap kendaraan?,Question,High,Pertanyaan biologis tumbuhan
+CALIB_061,UgzwQUnbfh2TZFpEgQx4AaABAg,H_5TPzquRyo,,"request dong""apa itu dark matter"" dan ""dunia paralel""makasih bang membantu banget",Suggestion,High,Request topik dark matter
+CALIB_062,UgxFYb7vlb9MwQshfoJ4AaABAg,QK01ROEqJ1A,,Sungguh goblok orang yang bilang Alam Semesta ini terjadi kebetulan,Disagreement,High,Penolakan keras klaim kebetulan
+CALIB_063,UgipLTG_a2fCCXgCoAEC,NVDIHTGVcLc,,asal usul mudik seru  klo dibahas,Suggestion,High,Usulan topik mudik
+CALIB_064,UgxwvJsOfMX_3H6t8pN4AaABAg.8zZedl-VqDs8z_s7veJy9W,QK01ROEqJ1A,UgxwvJsOfMX_3H6t8pN4AaABAg," Perbedaan pendapat selalu ada, lantas kenapa anda memaksakan org lain supaya sependapat dgn anda? ""Bagimu agamamu, bagiku agamaku"" (QS. Al-Kafirun:6)",Disagreement,High,Sanggahan pemaksaan pendapat
+CALIB_065,Ugxmk-YA_u2j6TrzykF4AaABAg,dghOCZmSEUQ,,"Min
+Bahas dong
+Kenapa hari Minggu ditetapkan sebagai hari libur
+Nggak hari lain",Suggestion,High,Permintaan bahas hari libur
+CALIB_066,UgxCbSyJ4iNHXXfIqTl4AaABAg.8jSEtxC1fc08jSMYxTNRtY,qis44fqpuAU,UgxCbSyJ4iNHXXfIqTl4AaABAg,Jika ada mesin waktu saya bisa menggunakannya untuk bertemu orang yang sudah meninggal atau bertemu tokoh sejarah,Opinion,High,Pendapat penggunaan mesin waktu
+CALIB_067,Ugw1hkzGXjOQYdK-S2N4AaABAg,iq0yOkj3d28,,"Bumi bulat atau rata  cuma teori saja, teori FE blh di masuk akal juga. Lgpun 1 satelit pun belum pernah nmpk guna teleskop",Disagreement,High,Sanggahan terhadap bukti satelit
+CALIB_068,UgwxEl00g6iAJE2GgZx4AaABAg,AxyPASIXz1k,,"Dulu pas sma belajar kimia quantum aku bayangin kalo dunia ini sebearnya hanyalah bagian kecil dari atom yang besarnya di luar akal, dan atom yang ada di bumi ada bumi yang lain yang lebih222222 kecil yang menyusun atomnya itu",Experience,High,Pengalaman masa SMA belajar kuantum
+CALIB_069,UgyPtihdKtSPBohppM14AaABAg,qis44fqpuAU,,"masa depan dan masa lalu itu relatif,jika ada mesin waktu saya tidak akan menggunakannya.Biarkanlah takdir menjawab semuanya",Opinion,High,Pandangan filosofis takdir
+CALIB_070,UgwZc07gtD7i7xJRBPl4AaABAg,QK01ROEqJ1A,,"Kita manusia ini cm sub atom di alam semesta, jdi sebagai manusia jgn lah sombong di alam semesta ini.",Opinion,High,Pandangan refleksi manusia sub atom
+CALIB_071,UghrGwLxEy50QngCoAEC,iq0yOkj3d28,,apakah ada fakta2 nya klo bumi itu bulat ato datar jadi bingung mana yg benar mana yg hoax mohon penjelasan nya,Question,High,Pertanyaan fakta bumi bulat/datar
+CALIB_072,Ugwgwp867yII4EI4Xgh4AaABAg,21seK8tKSYI,,"Disini teori flat earth terlihat sangat tidak masuk akal. Padahal banyak fakta yg diungkap kan oleh para flat earth society yg disini dibuat melenceng bahkan, fakta2 di video ini tentang teori flat earth salah semua. sekian pendapat yang bisa saya sampaikan",Disagreement,High,Sanggahan isi video melenceng
+CALIB_073,Ugx-5YMnRdUENxDn6hh4AaABAg,dghOCZmSEUQ,,"min tolong bahas dong asal mula kenapa emas sangat begitu berharga, 
+apa udh ada video yg membahas itu,?
+Thanx",Suggestion,High,Usulan topik asal mula emas
+CALIB_074,UgxKLK7lKG7kyzACN_14AaABAg.8y9CIL790Wh9ZLp5rkEcpX,T9ttUfGG7EE,UgxKLK7lKG7kyzACN_14AaABAg,"Coba gogling brp kecepatan bumi berputar,,,,lbih gak masuk akal lagi 🤣🤣🤣",Disagreement,High,Sanggahan skeptis kecepatan rotasi
+CALIB_075,UgwhvVfdU36U3u7lv6p4AaABAg.9LwfRTnvvyP9LzpFHhpwnU,AxyPASIXz1k,UgwhvVfdU36U3u7lv6p4AaABAg,"DNA nya dikompres sampai sekecil manusia kayak black hole tapi black hole versi yang tak terbatasnya
+
+Misalnya saja ada blackhole paling masive di alam semesta trus gravitasi nya di hilangkan mungkin bisa jadi big bang ke 2",Opinion,High,Spekulasi teori black hole
+CALIB_076,UgjDiy7pp5gfhHgCoAEC,NVDIHTGVcLc,,"Min mau nanya tentang asal usul mimisan , termasuk yg ringan dan yg berat .
+
+Apa karna si tukang bakso kebanyakan saos :V",Question,High,Pertanyaan medis mimisan
+CALIB_077,UgiYyykF8mq2UngCoAEC.8NUVzJLErZ78cuOXU0P0bR,iq0yOkj3d28,UgiYyykF8mq2UngCoAEC,Pembodohan ! Ini bukan hanya indo goblok lihat tuh channel dari luar indo banyak,Disagreement,High,Penolakan keras tuduhan pembodohan
+CALIB_078,UgxnWCrN6Cx5qJKhYgt4AaABAg,QK01ROEqJ1A,,"Typo di wa udah biasa
+Typo di tumbnail luar biasa",Correction,Medium,Ralat typo thumbnail
+CALIB_079,UggrUouKFO79NHgCoAEC.8TSdxO98v6d8U7AFH83FIY,Tx87wEaDtxo,UggrUouKFO79NHgCoAEC,"loh ko menurut saya. orang faktanya begitu kok. faktanya teknologi yg anda gunakan untuk pake internet sekarang ini menggunakan satelit yg cara kerjanya atas dasar bumi yg bulat. jadi, makan aj tuh sendiri sate ayam sate kambing nya di bumi yg datar, dan tetep tertinggal dimasa lalu.",Disagreement,High,Sanggahan fakta satelit vs FE
+CALIB_080,UghnV-0TjB0T_ngCoAEC,uA3cMFjqfaM,,"min request dong, menurut mimin diluar bumi kita ini ada mahkluk lain (alien) gk yah? dan klo memang mimin percaya kalo ada mahkluk lain di luar sana apa alasannya?
+
+#dapettugasipakayabeginiandisekolahane",Suggestion,Medium,Request topik alien
+CALIB_081,Ugwgls8smOf5frswgD94AaABAg.8izm1oN-rPR8jno4xFhz-a,T9ttUfGG7EE,Ugwgls8smOf5frswgD94AaABAg,Setahu aku sih kayannya gudang milik NASA pernah mengalami kebakaran hebat entah kenapa.Itulah sebapnya banyak data yg hilang dan secara sengaja dipalsukan oleh orang yg tdk suka pada NASA tapi aku yakin itu bukan salah Uni Soviet saat itu.,Opinion,High,Spekulasi sejarah kebakaran NASA
+CALIB_082,UgxsqK1dgfWGhiqtdU54AaABAg,QK01ROEqJ1A,,"Bagaimana cara mereka tau kalo galaksi sebesar itu , kan satelitnya belum sejauh itu ???",Question,High,Pertanyaan metode ukur galaksi
+CALIB_083,UgwXY16jQCAosdiQU1N4AaABAg.9NXEi9_eH9K9NghTapWnIL,QK01ROEqJ1A,UgwXY16jQCAosdiQU1N4AaABAg,Harusnya ada,Opinion,Low,Pernyataan singkat spekulatif
+CALIB_084,UgwFllFT0oNt-B_CUcJ4AaABAg,twXOQyxZWxY,,"Gan gw suka nnton tiap videonya tapi audio nya kok slalu lebih besar  sound effect, daripada suara narator nya. Padahal yg penting itu suara naratornya. 😂😂😂😂.",Suggestion,High,Saran perbaikan audio sound effect
+CALIB_085,UgxI21sLg7c4LopmuJZ4AaABAg,QK01ROEqJ1A,,"Jika mggunakan teknologi pantulan cahaya yg ditemukan abad ini, kok bisa tahu jarak suatu objek alam semesta yg jaraknya hingga jutaan tahun lebih km cahaya?
+Tlg jawan pleasee",Question,High,Pertanyaan pantulan cahaya
+CALIB_086,UggCzI8xzqJ4XngCoAEC.8893NEFqc_m8BqkFIp_gXy,FjFsx6iQE3Y,UggCzI8xzqJ4XngCoAEC,"+Kok Bisa? ane mau request dong.. kan beberapa saat yang lalau di chanel kok bisa 
+udah pernah ngebahas ""apa itu Black HOLE?"" nah ane pengen tau tentang 
+WHITE HOLE dong!!",Suggestion,High,Request topik white hole
+CALIB_087,UgxWvWx-PnfW38dwcnJ4AaABAg.8j7bLr6wnez8lmoAE1uPMi,21seK8tKSYI,UgxWvWx-PnfW38dwcnJ4AaABAg,"anak bego, lu kira jadi ilmuwan itu mudah ? lu belajar fisika aja masih suka bolos udah sok tau bumi datar,, gue mau tanya manusia pertama penganut FE yang keluar bumi ? kasih tau gue.. gue eneg penganut FE ini cuma ngmongin teori mulu dan asumsi berdasarkan kejadian di bumi tapi suruh buktiin dari luar bumi gak mampu,, taik bener",Disagreement,High,Sanggahan agresif pada penganut FE
+CALIB_088,UgzxEppd5nEOLI_N9FV4AaABAg,FMNRItiR6ZA,,Kok bisa ada huruf?,Question,High,Pertanyaan asal mula huruf
+CALIB_089,UgjnT3eP74r4a3gCoAEC.86ZQ9SxoNQw86_c18I6hl_,Tx87wEaDtxo,UgjnT3eP74r4a3gCoAEC,"pertanyaan yg bagus nak
+jadi gini, pengertian kita terhadap gravitasi itu salah. yg bener adalah gaya gravitasi terjadi diantara benda yg punya momentum dan energi, bukan massa. karena cahaya punya momentum dan massa, makanya bisa ketarik gravitasinya lubang hitam itu",Correction,Medium,Ralat pengertian gravitasi
+CALIB_090,UgwYQzDxKLAvgqOGNw54AaABAg,AxyPASIXz1k,,Bagaimana jika kehidupan kita dan alam semesta ini hanyalah skala mikroskopis diantara kehidupan makhluk yang jauh lebih besar dari yang kita perkirakan??????,Opinion,Medium,Spekulasi filosofis mikroskopis
+CALIB_091,Ugxyo3l5uSxmlKs3gLh4AaABAg.9gWBREzwh4X9iqxH6qdz5b,21seK8tKSYI,Ugxyo3l5uSxmlKs3gLh4AaABAg,"@mujitoanam3349 bisa jadi karena ada link video atau website lain, atau menyalahi kebijakan youtube, atau dianggap spam karena diulang ulang sama persis",Opinion,High,Penjelasan kemungkinan penyebab spam
+CALIB_092,UgzRVS8R1hF_ygTWs1h4AaABAg,QK01ROEqJ1A,,Video pembodohan. Halusinasi berlebihan,Disagreement,High,Penolakan tuduhan video pembodohan
+CALIB_093,Ugj7i93lCEszk3gCoAEC,YljSXjd4lnk,,Bagaimana cara kerja wireless charging???,Question,High,Pertanyaan sains wireless charging
+CALIB_094,UgxuVEanwCTE5Ye1Utx4AaABAg,Beod6J0genE,,Apakah perut buncit faktor keturunan?,Question,High,Pertanyaan genetika perut buncit
+CALIB_095,UgxCopShNMazF5OqGBx4AaABAg,QK01ROEqJ1A,,"Penyampaiannya welcome banget di telinga. Dan bagian kalimat yg gw suka ""video ini bukan menjelaskan seberapa besarnya alam semesta,melainkan seberapa kecilnya kita di alak semesta"". Seketika menjadi bahan refleksi 🙏",Praise,High,Pujian dan refleksi penyampaian
+CALIB_096,Ugx5DW4tGfgQPw5YQal4AaABAg,qis44fqpuAU,,saya mau ke masa lalu dan ke masa depan karena dia duanya bagus untuk diketahui. Misalnya saya waktu kecil mau melihat diri saya dan di masa depan saya mau lihat saya menjadi apa nanti??  Yang suka ini like ya...,Opinion,High,Pandangan skenario masa lalu/depan
+CALIB_097,UggvnFhfX9B5u3gCoAEC.8OfHttjnUOO9dRrp3QB39T,FjFsx6iQE3Y,UggvnFhfX9B5u3gCoAEC,",,Uvo Ufo °sangat sering datang ke gunungg Mrapi smru di saat mulaii malam ampe subuh,hal yng serupa jg sering terjadi di gunung popocatepel yg berlokasi di Mexico,fakta not hoax!!°^^kxjzjjz",Opinion,Medium,Klaim opini UFO merapi
+CALIB_098,UgxKRlYG6g2ri7z4qMR4AaABAg,RBFhyVux3IE,,"Penjelasannya keren. Mau nanya ni, mengapa orang bisa tahu jarak dari bumi ke matahari ?",Question,High,Praise + Question jarak bumi matahari -> Question
+CALIB_099,UgyZn1QvHF5YZxtfyrl4AaABAg,zbSe0xE7tg0,,"Mau nanya dong, kenapa meteor yg Segede gaban bisa jadi sekecil batu kerikil kalau ngelewatin atmosfer bumi sedangkan roket bisa melintas dengan enaknya ke luar angkasa",Question,High,Pertanyaan fisika meteor vs roket
+CALIB_100,UgwALmbQOwfyi0ZvSgh4AaABAg,T8g_hUpx9VU,,Request :Kota paling panas di dunia🔥👌,Suggestion,High,Request kota paling panas

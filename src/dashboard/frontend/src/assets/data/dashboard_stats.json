@@ -1,0 +1,24 @@
+{
+    "total_comments": 202429,
+    "total_videos": 35,
+    "discourse_distribution": {
+        "Opinion": 140092,
+        "Question": 45738,
+        "Praise": 4484,
+        "Experience": 4415,
+        "Suggestion": 3090,
+        "Disagreement": 2559,
+        "Agreement": 1177,
+        "Correction": 874
+    },
+    "average_likes_by_act": {
+        "Experience": 8.15175537938845,
+        "Suggestion": 6.646925566343042,
+        "Praise": 5.236619090098126,
+        "Agreement": 2.9388275276125744,
+        "Correction": 2.911899313501144,
+        "Question": 2.8227294590930954,
+        "Opinion": 2.3795577192130883,
+        "Disagreement": 1.6260257913247362
+    }
+}

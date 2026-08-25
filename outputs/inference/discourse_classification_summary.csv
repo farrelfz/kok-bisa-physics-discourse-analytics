@@ -1,0 +1,9 @@
+predicted_label,Comments,Percentage,Mean_Confidence,Median_Confidence,Mean_Margin,Median_Margin
+Question,45738,22.59,0.9953,0.9987,0.9953,0.9987
+Opinion,140092,69.21,0.9956,0.9993,0.9956,0.9993
+Disagreement,2559,1.26,0.9798,0.9991,0.9798,0.9991
+Correction,874,0.43,0.9769,0.9991,0.9769,0.9991
+Suggestion,3090,1.53,0.9613,0.9988,0.9613,0.9988
+Praise,4484,2.22,0.9839,0.9986,0.9839,0.9986
+Agreement,1177,0.58,0.967,0.9987,0.967,0.9987
+Experience,4415,2.18,0.9856,0.9989,0.9856,0.9989

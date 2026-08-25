@@ -1,0 +1,10 @@
+{
+    "Question": 0,
+    "Opinion": 1,
+    "Disagreement": 2,
+    "Correction": 3,
+    "Suggestion": 4,
+    "Praise": 5,
+    "Agreement": 6,
+    "Experience": 7
+}

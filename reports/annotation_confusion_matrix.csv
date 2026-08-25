@@ -1,0 +1,9 @@
+,A2_Agreement,A2_Correction,A2_Disagreement,A2_Experience,A2_Opinion,A2_Praise,A2_Question,A2_Suggestion
+A1_Agreement,4,0,2,0,5,1,5,0
+A1_Correction,2,12,3,1,11,0,15,5
+A1_Disagreement,2,4,6,2,22,4,37,9
+A1_Experience,1,0,2,3,12,0,10,0
+A1_Opinion,5,14,5,4,81,9,37,6
+A1_Praise,1,0,0,0,8,26,13,0
+A1_Question,1,0,0,1,7,0,92,3
+A1_Suggestion,1,0,1,0,11,2,6,6

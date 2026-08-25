@@ -1,0 +1,3 @@
+input_text,predicted_label_id,predicted_label_name,confidence,top_3_probs
+Setuju banget min,6,Agreement,0.92,"[0.92, 0.05, 0.02]"
+Koreksi menit 3:20 itu salah besar,3,Correction,0.88,"[0.88, 0.10, 0.01]"

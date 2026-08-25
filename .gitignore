@@ -1,0 +1,66 @@
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Python Virtual Environments & Packages
+venv/
+.venv/
+env/
+ENV/
+build/
+dist/
+**/dist/
+*.egg-info/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node & Frontend Build Artifacts
+node_modules/
+**/node_modules/
+src/dashboard/frontend/dist/
+src/dashboard/frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large Data Binaries, Embeddings & Archives
+*.npy
+*.db
+*.sqlite3
+*.csv.gz
+*.parquet.gz
+*.zip
+*.tar.gz
+
+# Raw Scraping Harvest & Intermediate Checkpoints
+data/raw/
+data/annotated/backups/
+data/annotated/checkpoints/
+data/corpus/comments.csv
+outputs/inference/checkpoints/
+
+# Temporary, Logs & Scratch Dirs
+scratch/
+logs/
+*.log
+**/*.log
+*.tmp
+*.swp
+*.bak
+*~
+
+# IDE & OS Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.codegraph/

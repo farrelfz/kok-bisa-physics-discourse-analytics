@@ -1,0 +1,38 @@
+{
+  "corpus_stats": {
+    "total_videos": 35,
+    "total_comments_all": 202429,
+    "clean_words": 303055,
+    "ttr": 0.14485159459504052,
+    "mtld": 181.16123412185476,
+    "semantic_diversity": 0.7588489651679993
+  },
+  "discourse_totals": {
+    "Opinion": 140092,
+    "Question": 45738,
+    "Praise": 4484,
+    "Experience": 4415,
+    "Suggestion": 3090,
+    "Disagreement": 2559,
+    "Agreement": 1177,
+    "Correction": 874
+  },
+  "top_languages": [
+    [
+      "id",
+      159281
+    ],
+    [
+      "en",
+      5849
+    ],
+    [
+      "so",
+      3474
+    ],
+    [
+      "de",
+      2175
+    ]
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "training_notebook": "08_discourse_model_training.ipynb",
+  "analysis_notebook": "06_indobert_semantic_analysis.ipynb",
+  "model_directory": "outputs/training/best_model",
+  "label_mapping": "outputs/training/best_model/label_mapping.json",
+  "corpus_input": "data/corpus/corpus.parquet",
+  "inference_output": "outputs/inference/full_corpus_predictions.parquet",
+  "inference_checkpoint_dir": "outputs/inference/checkpoints",
+  "figure_output_dir": "outputs/figures"
+}

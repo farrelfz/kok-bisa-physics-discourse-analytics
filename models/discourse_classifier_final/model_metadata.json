@@ -1,0 +1,32 @@
+{
+    "base_model": "microsoft/mdeberta-v3-base",
+    "dataset_name": "gold_standard_balanced_natural",
+    "dataset_version": "1.0",
+    "training_date": "2026-08-24",
+    "number_of_labels": 8,
+    "label_mapping": {
+        "Question": 0,
+        "Opinion": 1,
+        "Disagreement": 2,
+        "Correction": 3,
+        "Suggestion": 4,
+        "Praise": 5,
+        "Agreement": 6,
+        "Experience": 7
+    },
+    "best_hyperparameters": {
+        "learning_rate": 2e-05,
+        "batch_size": 16,
+        "epochs": 5,
+        "max_length": 128
+    },
+    "validation_metrics": {
+        "macro_f1": 0.08,
+        "accuracy": 0.12
+    },
+    "test_metrics": {
+        "macro_f1": 0.08,
+        "accuracy": 0.125
+    },
+    "random_seed": 42
+}
