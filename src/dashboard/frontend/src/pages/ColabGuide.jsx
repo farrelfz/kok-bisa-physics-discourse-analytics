@@ -21,7 +21,7 @@ const STEPS = [
     num: 3,
     title: "Clone Repositori & Install Dependencies",
     desc: "Download dataset korpus dan install seluruh pustaka transformer PyTorch & HuggingFace.",
-    code: "!git clone https://github.com/farrelfz/dataset-belajar.git kokbisa\n%cd kokbisa\n!pip install -r requirements.txt",
+    code: "!git clone https://github.com/farrelfz/kok-bisa-physics-discourse-analytics.git kokbisa\n%cd kokbisa\n!pip install -r requirements.txt",
     badge: "Setup Environment",
   },
   {

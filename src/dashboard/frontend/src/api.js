@@ -4,7 +4,7 @@
 import dashboardStats from "./assets/data/dashboard_stats.json";
 import rawVideosEnriched from "./assets/data/videos_enriched.json";
 import projectionData from "./assets/data/projection_sample.json";
-import { LABEL_COLORS, CANONICAL_LABELS } from "./constants.js";
+import { LABEL_COLORS, CANONICAL_LABELS, EXPERIMENTS } from "./constants.js";
 
 const RAW_API = import.meta.env.VITE_API_URL || "";
 const BASE = RAW_API ? RAW_API.replace(/\/+$/, "") + "/api" : "";
@@ -75,14 +75,113 @@ CANONICAL_LABELS.forEach((lbl) => {
     comment_id: p.id || `rep_${lbl}_${idx}`,
     text: p.text,
     discourse_label: p.act,
+    predicted_label: p.act,
     predicted_discourse_act: p.act,
     confidence: 0.98 - idx * 0.01,
     margin: 0.95 - idx * 0.02,
     likes: p.likes || 5 - idx,
+    like_count: p.likes || 5 - idx,
     video_title: p.video || "Fisika Kok Bisa?",
     video_id: "QK01ROEqJ1A",
   }));
 });
+
+// ── Sample Ambiguous Comments & Scatter Points ─────────────────────────────────
+const AMBIGUOUS_COMMENTS = [
+  {
+    comment_id: "unc_1",
+    text: "Mungkin teorinya bener tapi apakah sudah pernah dibuktikan secara eksperimen langsung di laboratorium fisika?",
+    predicted_label: "Question",
+    second_label: "Opinion",
+    confidence: 0.54,
+    second_confidence: 0.46,
+    margin: 0.08,
+    entropy: 0.68,
+    like_count: 7,
+    video_title: "Apa Itu Black Hole Sebenarnya?",
+    video_id: "impJiSfof9E",
+  },
+  {
+    comment_id: "unc_2",
+    text: "Kayanya pada menit 03:20 ada sedikit kekeliruan rumus gerak melingkar, harusnya kuadrat jari-jari bukan dikali dua.",
+    predicted_label: "Correction",
+    second_label: "Suggestion",
+    confidence: 0.56,
+    second_confidence: 0.41,
+    margin: 0.15,
+    entropy: 0.64,
+    like_count: 14,
+    video_title: "Kenapa Pesawat Bisa Terbang?",
+    video_id: "YljSXjd4lnk",
+  },
+  {
+    comment_id: "unc_3",
+    text: "Penjelasan animasinya sangat membantu, tapi saya merasa analogi gravitasi ruang waktu di video ini agak kurang tepat.",
+    predicted_label: "Praise",
+    second_label: "Disagreement",
+    confidence: 0.52,
+    second_confidence: 0.47,
+    margin: 0.05,
+    entropy: 0.69,
+    like_count: 9,
+    video_title: "Apa Jadinya Jika Bumi Datar?",
+    video_id: "21seK8tKSYI",
+  },
+  {
+    comment_id: "unc_4",
+    text: "Waktu zaman SMA guru fisika saya pernah coba jelaskan ini pake bola karet, persis seperti analogi di video ini.",
+    predicted_label: "Experience",
+    second_label: "Opinion",
+    confidence: 0.58,
+    second_confidence: 0.39,
+    margin: 0.19,
+    entropy: 0.61,
+    like_count: 5,
+    video_title: "Apakah Ada Ujung Alam Semesta?",
+    video_id: "QK01ROEqJ1A",
+  },
+  {
+    comment_id: "unc_5",
+    text: "Menurut saya teori multiverse lebih masuk akal dibanding singularitas murni, gimana menurut kalian?",
+    predicted_label: "Opinion",
+    second_label: "Question",
+    confidence: 0.53,
+    second_confidence: 0.44,
+    margin: 0.09,
+    entropy: 0.67,
+    like_count: 11,
+    video_title: "Apakah Ada Kehidupan Lain di Luar Bumi?",
+    video_id: "FjFsx6iQE3Y",
+  },
+  {
+    comment_id: "unc_6",
+    text: "Saran untuk video berikutnya tolong bahas paradoks Fermi dan mekanika kuantum partikel Higgs Boson min!",
+    predicted_label: "Suggestion",
+    second_label: "Opinion",
+    confidence: 0.57,
+    second_confidence: 0.38,
+    margin: 0.19,
+    entropy: 0.62,
+    like_count: 23,
+    video_title: "Apakah Ada yang Lebih Kecil dari Atom?",
+    video_id: "AxyPASIXz1k",
+  },
+];
+
+const SCATTER_SAMPLE = [
+  { x: 0.52, y: 0.05, label: "Praise", color: LABEL_COLORS.Praise },
+  { x: 0.54, y: 0.08, label: "Question", color: LABEL_COLORS.Question },
+  { x: 0.56, y: 0.15, label: "Correction", color: LABEL_COLORS.Correction },
+  { x: 0.58, y: 0.19, label: "Experience", color: LABEL_COLORS.Experience },
+  { x: 0.53, y: 0.09, label: "Opinion", color: LABEL_COLORS.Opinion },
+  { x: 0.57, y: 0.19, label: "Suggestion", color: LABEL_COLORS.Suggestion },
+  { x: 0.62, y: 0.22, label: "Disagreement", color: LABEL_COLORS.Disagreement },
+  { x: 0.65, y: 0.28, label: "Agreement", color: LABEL_COLORS.Agreement },
+  { x: 0.68, y: 0.29, label: "Question", color: LABEL_COLORS.Question },
+  { x: 0.59, y: 0.12, label: "Opinion", color: LABEL_COLORS.Opinion },
+  { x: 0.61, y: 0.18, label: "Correction", color: LABEL_COLORS.Correction },
+  { x: 0.63, y: 0.24, label: "Suggestion", color: LABEL_COLORS.Suggestion },
+];
 
 export const api = {
   health: () =>
@@ -234,62 +333,29 @@ export const api = {
     })),
 
   uncertainty: (p = {}) =>
-    req("/uncertainty", p, () => {
-      const list = [
-        {
-          comment_id: "unc_1",
-          text: "Mungkin teorinya bener tapi apakah sudah pernah dibuktikan secara eksperimen langsung di lab?",
-          predicted_label: "Question",
-          second_label: "Opinion",
-          confidence: 0.52,
-          second_confidence: 0.45,
-          margin: 0.07,
-          entropy: 0.68,
-          like_count: 5,
-          video_title: "Apa Itu Black Hole Sebenarnya?",
-        },
-        {
-          comment_id: "unc_2",
-          text: "Kayanya menit 03:20 ada sedikit salah ralat rumus, harusnya kuadrat bukan kali dua min.",
-          predicted_label: "Correction",
-          second_label: "Suggestion",
-          confidence: 0.54,
-          second_confidence: 0.42,
-          margin: 0.12,
-          entropy: 0.65,
-          like_count: 12,
-          video_title: "Kenapa Pesawat Bisa Terbang?",
-        },
-        {
-          comment_id: "unc_3",
-          text: "Keren penjelasannya, tapi saya agak kurang sependapat sama kesimpulan bagian akhirnya.",
-          predicted_label: "Praise",
-          second_label: "Disagreement",
-          confidence: 0.51,
-          second_confidence: 0.46,
-          margin: 0.05,
-          entropy: 0.69,
-          like_count: 8,
-          video_title: "Apa Jadinya Jika Bumi Datar?",
-        },
-        {
-          comment_id: "unc_4",
-          text: "Saya dulu pernah coba teleskop mini tapi ga keliatan cincin Saturnus, apa karena polusi cahaya?",
-          predicted_label: "Experience",
-          second_label: "Question",
-          confidence: 0.53,
-          second_confidence: 0.44,
-          margin: 0.09,
-          entropy: 0.67,
-          like_count: 4,
-          video_title: "Apakah Ada Ujung Alam Semesta?",
-        },
-      ];
+    req("/uncertainty", p, (params) => {
+      const page = params?.page || 1;
+      const pageSize = params?.page_size || 25;
+      const start = (page - 1) * pageSize;
+      const paginated = AMBIGUOUS_COMMENTS.slice(start, start + pageSize);
+
+      const labelCounts = {};
+      AMBIGUOUS_COMMENTS.forEach((c) => {
+        labelCounts[c.predicted_label] = (labelCounts[c.predicted_label] || 0) + 1;
+      });
+
+      const labelBreakdown = Object.entries(labelCounts).map(([label, count]) => ({
+        label,
+        count,
+      }));
+
       return {
-        comments: list,
-        items: list,
-        total: list.length,
-        total_pages: 1,
+        comments: paginated,
+        items: paginated,
+        scatter_sample: SCATTER_SAMPLE,
+        label_breakdown: labelBreakdown,
+        total: AMBIGUOUS_COMMENTS.length,
+        total_pages: Math.max(1, Math.ceil(AMBIGUOUS_COMMENTS.length / pageSize)),
       };
     }),
 
@@ -303,6 +369,8 @@ export const api = {
       accuracy: 0.9773,
       weighted_f1: 0.9765,
       test_size: 2100,
+      experiments: EXPERIMENTS,
+      best_model: EXPERIMENTS.find((e) => e.is_best) || EXPERIMENTS[2],
       classification_report: {
         Question: { precision: 0.981, recall: 0.975, f1: 0.978, support: 525 },
         Opinion: { precision: 0.972, recall: 0.978, f1: 0.975, support: 525 },
@@ -329,15 +397,24 @@ export const api = {
     }),
 
   languages: (limit = 15) =>
-    req("/analytics/languages", { limit }, () => ({
-      languages: [
-        { language: "id (Indonesian)", name: "Indonesian (Formal & Standard)", count: 186420, pct: 92.1 },
-        { language: "id-slang", name: "Indonesian Slang / Colloquial (Jaksel/Gaul)", count: 11960, pct: 5.9 },
-        { language: "en (English)", name: "English", count: 2840, pct: 1.4 },
-        { language: "jv/su", name: "Regional (Javanese / Sundanese)", count: 1209, pct: 0.6 },
-      ],
-      total: 202429,
-    })),
+    req("/analytics/languages", { limit }, () => {
+      const list = [
+        { lang_detected: "id", language: "id (Indonesian)", name: "Indonesian 🇮🇩", count: 160728, pct: 79.4 },
+        { lang_detected: "en", language: "en (English)", name: "English 🇬🇧", count: 18218, pct: 9.0 },
+        { lang_detected: "tl", language: "tl (Tagalog)", name: "Tagalog 🇵🇭", count: 6072, pct: 3.0 },
+        { lang_detected: "so", language: "so (Somali)", name: "Somali 🌍", count: 4048, pct: 2.0 },
+        { lang_detected: "sw", language: "sw (Swahili)", name: "Swahili 🌍", count: 3036, pct: 1.5 },
+        { lang_detected: "unknown", language: "unknown (Slang/Mixed)", name: "Mixed / Slang", count: 2631, pct: 1.3 },
+        { lang_detected: "de", language: "de (German)", name: "German 🇩🇪", count: 2024, pct: 1.0 },
+        { lang_detected: "et", language: "et (Estonian)", name: "Estonian 🇪🇪", count: 1619, pct: 0.8 },
+        { lang_detected: "fi", language: "fi (Finnish)", name: "Finnish 🇫🇮", count: 1214, pct: 0.6 },
+        { lang_detected: "it", language: "it (Italian)", name: "Italian 🇮🇹", count: 1012, pct: 0.5 },
+      ];
+      return {
+        languages: list.slice(0, limit),
+        total: TOTAL_COMMENTS,
+      };
+    }),
 
   exportCsvUrl: (params = {}) => {
     let fullUrl;
