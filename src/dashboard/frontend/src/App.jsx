@@ -23,26 +23,26 @@ import AboutResearch       from "./pages/AboutResearch.jsx";
 
 const NAV = [
   // ── Analytics & Exploration ──
-  { id: "overview",    label: "Overview",           icon: LayoutDashboard, section: "Analytics",       badge: "KPIs" },
-  { id: "discourse",   label: "Discourse Analysis", icon: BarChart3,       section: "Analytics",       badge: "8 Acts" },
-  { id: "videos",      label: "Video Analysis",     icon: Video,           section: "Analytics",       badge: "35 Vids" },
-  { id: "embeddings",  label: "Semantic Space (2D)",icon: Compass,         section: "Analytics",       badge: "PCA" },
-  { id: "language",    label: "Language Map",       icon: Globe,           section: "Analytics",       badge: "41 Lang" },
+  { id: "overview",    label: "Overview",           icon: LayoutDashboard, section: "Analytics" },
+  { id: "discourse",   label: "Discourse Analysis", icon: BarChart3,       section: "Analytics" },
+  { id: "videos",      label: "Video Analysis",     icon: Video,           section: "Analytics" },
+  { id: "embeddings",  label: "Semantic Space (2D)",icon: Compass,         section: "Analytics" },
+  { id: "language",    label: "Language Map",       icon: Globe,           section: "Analytics" },
 
   // ── Corpus & Diagnostics ──
-  { id: "comments",    label: "Comment Explorer",   icon: Search,          section: "Corpus & Data",   badge: "202k" },
-  { id: "confidence",  label: "Confidence Explorer",icon: Activity,        section: "Corpus & Data",   badge: "Certainty" },
-  { id: "uncertainty", label: "Boundary Ambiguity", icon: AlertTriangle,   section: "Corpus & Data",   badge: "Review" },
+  { id: "comments",    label: "Comment Explorer",   icon: Search,          section: "Corpus & Data" },
+  { id: "confidence",  label: "Confidence Explorer",icon: Activity,        section: "Corpus & Data" },
+  { id: "uncertainty", label: "Boundary Ambiguity", icon: AlertTriangle,   section: "Corpus & Data" },
 
   // ── Interactive Lab ──
-  { id: "playground",  label: "Live Playground",    icon: Sparkles,        section: "Interactive Lab", badge: "Inference" },
+  { id: "playground",  label: "Live Playground",    icon: Sparkles,        section: "Interactive Lab" },
 
   // ── Research & Engine ──
-  { id: "model",       label: "Model Performance",  icon: BrainCircuit,    section: "Research & Engine", badge: "97.4% F1" },
-  { id: "pipeline",    label: "Pipeline Stages",    icon: Layers,          section: "Research & Engine", badge: "9 Steps" },
-  { id: "methodology", label: "Methodology",        icon: BookOpen,        section: "Research & Engine", badge: "Codebook" },
-  { id: "colab",       label: "Colab Reproduction", icon: Terminal,        section: "Research & Engine", badge: "GPU" },
-  { id: "about",       label: "About & Copyright",  icon: Info,            section: "Research & Engine", badge: "Credits" },
+  { id: "model",       label: "Model Performance",  icon: BrainCircuit,    section: "Research & Engine" },
+  { id: "pipeline",    label: "Pipeline Stages",    icon: Layers,          section: "Research & Engine" },
+  { id: "methodology", label: "Methodology",        icon: BookOpen,        section: "Research & Engine" },
+  { id: "colab",       label: "Colab Reproduction", icon: Terminal,        section: "Research & Engine" },
+  { id: "about",       label: "About & Copyright",  icon: Info,            section: "Research & Engine" },
 ];
 
 const PAGES = {
@@ -101,8 +101,7 @@ export default function App() {
     const q = navSearch.toLowerCase();
     return NAV.filter(n =>
       n.label.toLowerCase().includes(q) ||
-      n.section.toLowerCase().includes(q) ||
-      (n.badge && n.badge.toLowerCase().includes(q))
+      n.section.toLowerCase().includes(q)
     );
   }, [navSearch]);
 
@@ -187,11 +186,8 @@ export default function App() {
           {activeSections.map(sec => (
             <div key={sec} style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 6 }}>
               {!collapsed && (
-                <div className="nav-section-label" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div className="nav-section-label">
                   <span>{sec}</span>
-                  <span style={{ fontSize: 9.5, opacity: 0.6, fontWeight: 500 }}>
-                    {filteredNav.filter(n => n.section === sec).length}
-                  </span>
                 </div>
               )}
               {filteredNav.filter(n => n.section === sec).map(n => {
@@ -207,29 +203,9 @@ export default function App() {
                       setMobileOpen(false);
                     }}
                     title={collapsed ? n.label : ""}
-                    style={{ justifyContent: "space-between" }}
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, overflow: "hidden" }}>
-                      <Icon className="nav-item-icon" size={15} />
-                      {(!collapsed || mobileOpen) && <span className="nav-item-label">{n.label}</span>}
-                    </div>
-                    {(!collapsed || mobileOpen) && n.badge && (
-                      <span
-                        style={{
-                          fontSize: 10,
-                          fontFamily: "JetBrains Mono",
-                          fontWeight: 600,
-                          padding: "1px 5px",
-                          borderRadius: 4,
-                          background: isActive ? "var(--brand-100)" : "var(--bg-subtle)",
-                          color: isActive ? "var(--brand-dark)" : "var(--text3)",
-                          border: `1px solid ${isActive ? "var(--brand-200)" : "var(--border)"}`,
-                          flexShrink: 0,
-                        }}
-                      >
-                        {n.badge}
-                      </span>
-                    )}
+                    <Icon className="nav-item-icon" size={15} />
+                    {(!collapsed || mobileOpen) && <span className="nav-item-label">{n.label}</span>}
                   </button>
                 );
               })}
@@ -337,37 +313,30 @@ export default function App() {
 
         {/* Page Content View */}
         <div className="page-content">
-          <PageComponent
-            navigateTo={navigateTo}
-            initialVideoId={navVideo}
-          />
-        </div>
+          <div className="page-inner-content">
+            <PageComponent
+              navigateTo={navigateTo}
+              initialVideoId={navVideo}
+            />
+          </div>
 
-        {/* ── Persistent Bottom Footer Strip & Copyright ── */}
-        <div style={{
-          padding: "8px 24px",
-          borderTop: "1px solid var(--border)",
-          background: "var(--surface)",
-          display: "flex",
-          gap: 20,
-          fontSize: 11,
-          color: "var(--text3)",
-          flexShrink: 0,
-          flexWrap: "wrap",
-          alignItems: "center",
-        }}>
-          <span style={{ fontWeight: 600, color: "var(--text2)" }}>
-            © 2026 Indonesian Public Discourse Corpus (IPDC) Project
-          </span>
-          <span>·</span>
-          <span>Deep Learning Indonesian Physics Discourse Analysis</span>
-          <span>·</span>
-          <span>202,429+ Verified YouTube Comments</span>
-          <span>·</span>
-          <span>8 Canonical Discourse Categories</span>
-          <span style={{ marginLeft: "auto", color: "var(--text3)", fontFamily: "JetBrains Mono" }}>
-            indobenchmark/indobert-base-p1 (Macro F1: 97.40%)
-          </span>
+          {/* ── Natural Scrollable Footer ── */}
+          <footer className="app-footer">
+            <div className="app-footer-left">
+              <span className="app-footer-brand">
+                © 2026 Indonesian Public Discourse Corpus (IPDC) Project
+              </span>
+              <span className="footer-dot">·</span>
+              <span>Deep Learning Indonesian Physics Discourse Analysis</span>
+              <span className="footer-dot">·</span>
+              <span>202,429+ Verified YouTube Comments</span>
+              <span className="footer-dot">·</span>
+              <span>8 Canonical Discourse Categories</span>
+            </div>
+            <div className="app-footer-right">
+              <code>indobenchmark/indobert-base-p1 (Macro F1: 97.40%)</code>
+            </div>
+          </footer>
         </div>
       </div>
     </div>

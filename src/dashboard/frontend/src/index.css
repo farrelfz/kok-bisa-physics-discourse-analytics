@@ -250,12 +250,49 @@ code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; font-variant-n
   border: 1px solid var(--border);
 }
 
-/* ── Page Content ────────────────────────────────────────────────── */
+/* ── Page Content & Natural Scrollable Footer ────────────────────── */
 .page-content {
   flex: 1;
   overflow-y: auto;
-  padding: 24px 28px;
+  padding: 24px 28px 0 28px;
   background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+.page-inner-content {
+  flex: 1;
+  padding-bottom: 24px;
+}
+.app-footer {
+  margin-top: auto;
+  padding: 18px 0 24px 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 11.5px;
+  color: var(--text3);
+  flex-wrap: wrap;
+}
+.app-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.app-footer-brand {
+  font-weight: 600;
+  color: var(--text2);
+}
+.footer-dot {
+  color: var(--text4);
+}
+.app-footer-right {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
 }
 
 /* ── Cards (shadcn/ui Rectangular Geometry) ──────────────────────── */
