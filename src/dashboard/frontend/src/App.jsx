@@ -82,12 +82,14 @@ const PAGE_TITLES = {
 export default function App() {
   const [page, setPage]           = useState("overview");
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [navVideo, setNavVideo]   = useState(null);
   const [navSearch, setNavSearch] = useState("");
 
   const navigateTo = useCallback((pageId, extra = {}) => {
     if (PAGES[pageId]) {
       setPage(pageId);
+      setMobileOpen(false);
     }
     if (extra.videoId) setNavVideo(extra.videoId);
   }, []);
@@ -110,14 +112,22 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      {/* ── Mobile Backdrop ── */}
+      {mobileOpen && (
+        <div
+          className="sidebar-backdrop open"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
       {/* ── Sidebar ── */}
-      <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
+      <aside className={`sidebar ${collapsed ? "collapsed" : ""} ${mobileOpen ? "mobile-open" : ""}`}>
         {/* Brand */}
         <div className="sidebar-brand">
           <div className="sidebar-brand-logo">
             KB
           </div>
-          {!collapsed && (
+          {(!collapsed || mobileOpen) && (
             <div className="sidebar-brand-text">
               <div className="sidebar-brand-name">KOK BISA?</div>
               <div className="sidebar-brand-sub">Discourse Analytics</div>
@@ -126,10 +136,10 @@ export default function App() {
           <button
             type="button"
             className="mobile-close-btn"
-            onClick={() => setCollapsed(true)}
-            style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--text3)", cursor: "pointer", display: "none" }}
+            onClick={() => setMobileOpen(false)}
+            title="Close menu"
           >
-            <X size={16} />
+            <X size={18} />
           </button>
         </div>
 
@@ -194,15 +204,16 @@ export default function App() {
                     className={`nav-item ${isActive ? "active" : ""}`}
                     onClick={() => {
                       setPage(n.id);
+                      setMobileOpen(false);
                     }}
                     title={collapsed ? n.label : ""}
                     style={{ justifyContent: "space-between" }}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: 10, overflow: "hidden" }}>
                       <Icon className="nav-item-icon" size={15} />
-                      {!collapsed && <span className="nav-item-label">{n.label}</span>}
+                      {(!collapsed || mobileOpen) && <span className="nav-item-label">{n.label}</span>}
                     </div>
-                    {!collapsed && n.badge && (
+                    {(!collapsed || mobileOpen) && n.badge && (
                       <span
                         style={{
                           fontSize: 10,
@@ -227,7 +238,7 @@ export default function App() {
         </nav>
 
         {/* ── Sidebar Footer & Copyright ── */}
-        {!collapsed && (
+        {(!collapsed || mobileOpen) && (
           <div className="sidebar-footer" style={{ borderTop: "1px solid var(--border)", padding: "12px 14px" }}>
             <div className="footer-brand" style={{ fontSize: 11.5, fontWeight: 700, color: "var(--text1)", marginBottom: 2 }}>
               KOK BISA? · Physics Analytics
@@ -249,25 +260,31 @@ export default function App() {
         <div className="topbar">
           <button
             type="button"
-            className="btn btn-ghost btn-icon"
-            onClick={() => setCollapsed(c => !c)}
+            className="btn btn-ghost btn-icon menu-toggle-btn"
+            onClick={() => {
+              if (window.innerWidth <= 768) {
+                setMobileOpen(o => !o);
+              } else {
+                setCollapsed(c => !c);
+              }
+            }}
             style={{ padding: "6px" }}
-            title="Toggle Sidebar"
+            title="Toggle Navigation"
           >
             {collapsed ? <ChevronRight size={15} /> : <Menu size={15} />}
           </button>
           
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 13, color: "var(--text3)", fontWeight: 600 }}>Research Portal</span>
-            <span style={{ fontSize: 13, color: "var(--text4)" }}>/</span>
+          <div className="topbar-breadcrumb" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span className="topbar-portal-name" style={{ fontSize: 13, color: "var(--text3)", fontWeight: 600 }}>Research Portal</span>
+            <span className="topbar-portal-sep" style={{ fontSize: 13, color: "var(--text4)" }}>/</span>
             <span className="topbar-title" style={{ fontSize: 14.5, fontWeight: 700 }}>
               {PAGE_TITLES[page] || page}
             </span>
           </div>
 
-          <div className="topbar-right" style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 10 }}>
+          <div className="topbar-right" style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
             <span
-              className="topbar-badge"
+              className="topbar-badge topbar-badge-stats"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -282,10 +299,11 @@ export default function App() {
               }}
             >
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
-              202,429 Comments · 35 Public Videos
+              <span className="topbar-badge-text">202,429 Comments · 35 Videos</span>
             </span>
 
             <span
+              className="topbar-badge topbar-badge-model"
               style={{
                 fontSize: 11,
                 fontFamily: "JetBrains Mono",
@@ -297,8 +315,23 @@ export default function App() {
                 fontWeight: 700,
               }}
             >
-              IndoBERT 97.40% F1
+              IndoBERT 97.4% F1
             </span>
+
+            {/* ── GitHub Repository Link Button (Sleek Dark Badge) ── */}
+            <a
+              href="https://github.com/farrelfz/kok-bisa-physics-discourse-analytics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-topbar-link"
+              title="View Repository on GitHub: farrelfz/kok-bisa-physics-discourse-analytics"
+            >
+              <svg className="github-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+                <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>
+              </svg>
+              <span className="github-label">GitHub</span>
+              <span className="github-badge">Code</span>
+            </a>
           </div>
         </div>
 
