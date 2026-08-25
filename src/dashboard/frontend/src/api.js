@@ -197,8 +197,8 @@ export const api = {
       total_comments: TOTAL_COMMENTS,
       total_videos: TOTAL_VIDEOS,
       unique_commenters: 146819,
-      mean_confidence: 0.9412,
-      mean_margin: 0.892,
+      mean_confidence: 0.9945,
+      mean_margin: 0.9945,
       discourse_distribution: DISCOURSE_DIST,
       average_likes_by_act: dashboardStats.average_likes_by_act || {},
     })),
@@ -237,14 +237,14 @@ export const api = {
   discourseAnalytics: (vid) =>
     req("/analytics/discourse", vid ? { video_id: vid } : {}, () => {
       const statsList = [
-        { label: "Question", count: 45738, pct: 22.6, avg_confidence: 0.952, avg_len: 68.4, avg_likes: 2.82, color: "#3B82F6" },
-        { label: "Opinion", count: 140092, pct: 69.2, avg_confidence: 0.941, avg_len: 84.1, avg_likes: 2.38, color: "#8B5CF6" },
-        { label: "Disagreement", count: 2559, pct: 1.3, avg_confidence: 0.938, avg_len: 92.6, avg_likes: 1.63, color: "#EF4444" },
-        { label: "Correction", count: 874, pct: 0.4, avg_confidence: 0.949, avg_len: 112.3, avg_likes: 2.91, color: "#F97316" },
-        { label: "Suggestion", count: 3090, pct: 1.5, avg_confidence: 0.956, avg_len: 74.8, avg_likes: 6.65, color: "#14B8A6" },
-        { label: "Praise", count: 4484, pct: 2.2, avg_confidence: 0.968, avg_len: 42.5, avg_likes: 5.24, color: "#EAB308" },
-        { label: "Agreement", count: 1177, pct: 0.6, avg_confidence: 0.945, avg_len: 54.2, avg_likes: 2.94, color: "#22C55E" },
-        { label: "Experience", count: 4415, pct: 2.2, avg_confidence: 0.948, avg_len: 135.0, avg_likes: 8.15, color: "#EC4899" },
+        { label: "Question", count: 45738, pct: 22.59, avg_confidence: 0.9953, avg_len: 68.4, avg_likes: 2.82, color: "#3B82F6" },
+        { label: "Opinion", count: 140092, pct: 69.21, avg_confidence: 0.9956, avg_len: 84.1, avg_likes: 2.38, color: "#8B5CF6" },
+        { label: "Disagreement", count: 2559, pct: 1.26, avg_confidence: 0.9798, avg_len: 92.6, avg_likes: 1.63, color: "#EF4444" },
+        { label: "Correction", count: 874, pct: 0.43, avg_confidence: 0.9769, avg_len: 112.3, avg_likes: 2.91, color: "#F97316" },
+        { label: "Suggestion", count: 3090, pct: 1.53, avg_confidence: 0.9613, avg_len: 74.8, avg_likes: 6.65, color: "#14B8A6" },
+        { label: "Praise", count: 4484, pct: 2.22, avg_confidence: 0.9839, avg_len: 42.5, avg_likes: 5.24, color: "#EAB308" },
+        { label: "Agreement", count: 1177, pct: 0.58, avg_confidence: 0.9670, avg_len: 54.2, avg_likes: 2.94, color: "#22C55E" },
+        { label: "Experience", count: 4415, pct: 2.18, avg_confidence: 0.9856, avg_len: 135.0, avg_likes: 8.15, color: "#EC4899" },
       ];
       return {
         stats: statsList,
@@ -307,8 +307,8 @@ export const api = {
 
   confidenceOverview: () =>
     req("/analytics/confidence-overview", {}, () => ({
-      mean_confidence: 0.9412,
-      mean_margin: 0.892,
+      mean_confidence: 0.9945,
+      mean_margin: 0.9945,
       max_confidence: 0.9998,
       min_confidence: 0.3540,
       high_confidence_pct: 85.0,
@@ -401,16 +401,21 @@ export const api = {
   languages: (limit = 15) =>
     req("/analytics/languages", { limit }, () => {
       const list = [
-        { lang_detected: "id", language: "id (Indonesian)", name: "Indonesian 🇮🇩", count: 160728, pct: 79.4 },
-        { lang_detected: "en", language: "en (English)", name: "English 🇬🇧", count: 18218, pct: 9.0 },
-        { lang_detected: "tl", language: "tl (Tagalog)", name: "Tagalog 🇵🇭", count: 6072, pct: 3.0 },
-        { lang_detected: "so", language: "so (Somali)", name: "Somali 🌍", count: 4048, pct: 2.0 },
-        { lang_detected: "sw", language: "sw (Swahili)", name: "Swahili 🌍", count: 3036, pct: 1.5 },
-        { lang_detected: "unknown", language: "unknown (Slang/Mixed)", name: "Mixed / Slang", count: 2631, pct: 1.3 },
-        { lang_detected: "de", language: "de (German)", name: "German 🇩🇪", count: 2024, pct: 1.0 },
-        { lang_detected: "et", language: "et (Estonian)", name: "Estonian 🇪🇪", count: 1619, pct: 0.8 },
-        { lang_detected: "fi", language: "fi (Finnish)", name: "Finnish 🇫🇮", count: 1214, pct: 0.6 },
-        { lang_detected: "it", language: "it (Italian)", name: "Italian 🇮🇹", count: 1012, pct: 0.5 },
+        { lang_detected: "id", language: "id (Indonesian)", name: "Indonesian 🇮🇩", count: 159281, pct: 78.7 },
+        { lang_detected: "tl", language: "tl (Tagalog/Austronesian)", name: "Tagalog 🇵🇭", count: 10483, pct: 5.2 },
+        { lang_detected: "en", language: "en (English)", name: "English 🇬🇧", count: 5849, pct: 2.9 },
+        { lang_detected: "so", language: "so (Somali Particles)", name: "Somali 🌍", count: 3474, pct: 1.7 },
+        { lang_detected: "unknown", language: "unknown (Slang/Gaul)", name: "Mixed / Slang", count: 3122, pct: 1.5 },
+        { lang_detected: "sw", language: "sw (Swahili)", name: "Swahili 🌍", count: 3037, pct: 1.5 },
+        { lang_detected: "de", language: "de (German)", name: "German 🇩🇪", count: 2175, pct: 1.1 },
+        { lang_detected: "et", language: "et (Estonian)", name: "Estonian 🇪🇪", count: 1464, pct: 0.7 },
+        { lang_detected: "fi", language: "fi (Finnish)", name: "Finnish 🇫🇮", count: 1133, pct: 0.6 },
+        { lang_detected: "it", language: "it (Italian)", name: "Italian 🇮🇹", count: 1006, pct: 0.5 },
+        { lang_detected: "af", language: "af (Afrikaans)", name: "Afrikaans 🇿🇦", count: 895, pct: 0.4 },
+        { lang_detected: "pl", language: "pl (Polish)", name: "Polish 🇵🇱", count: 875, pct: 0.4 },
+        { lang_detected: "hr", language: "hr (Croatian)", name: "Croatian 🇭🇷", count: 851, pct: 0.4 },
+        { lang_detected: "no", language: "no (Norwegian)", name: "Norwegian 🇳🇴", count: 792, pct: 0.4 },
+        { lang_detected: "tr", language: "tr (Turkish)", name: "Turkish 🇹🇷", count: 737, pct: 0.4 },
       ];
       return {
         languages: list.slice(0, limit),
