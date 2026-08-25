@@ -69,7 +69,18 @@ export default function Overview({ navigateTo }) {
     ])
       .then(([ovData, vmData]) => {
         setData(ovData);
-        setVideoMatrix((vmData.data || []).slice(0, 15));
+        const rawList = Array.isArray(vmData) ? vmData : (vmData.data || []);
+        const formatted = rawList.slice(0, 15).map(v => {
+          const tot = v.total_comments || 1;
+          const row = { ...v };
+          CANONICAL_LABELS.forEach(lbl => {
+            const count = v[lbl] != null ? v[lbl] : (v.discourse_distribution?.[lbl] || 0);
+            row[lbl] = count;
+            row[`${lbl}_pct`] = Number(((count / tot) * 100).toFixed(1));
+          });
+          return row;
+        });
+        setVideoMatrix(formatted);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -286,10 +297,10 @@ export default function Overview({ navigateTo }) {
             </button>
           </div>
 
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer width="100%" height={290}>
             <BarChart
               data={videoMatrix}
-              margin={{ top: 10, right: 15, left: 0, bottom: 40 }}
+              margin={{ top: 10, right: 15, left: 0, bottom: 45 }}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#E4E4E7" vertical={false} />
               <XAxis
@@ -297,15 +308,24 @@ export default function Overview({ navigateTo }) {
                 angle={-20}
                 textAnchor="end"
                 interval={0}
-                height={45}
+                height={50}
                 tick={{ fill: "var(--text2)", fontSize: 10.5, fontWeight: 500 }}
-                tickFormatter={(t) => t.length > 18 ? t.slice(0, 18) + "…" : t}
+                tickFormatter={(t) => t.length > 20 ? t.slice(0, 20) + "…" : t}
               />
               <YAxis
+                domain={[0, 100]}
                 tick={{ fill: "var(--text3)", fontSize: 11 }}
                 tickFormatter={(v) => `${v}%`}
               />
-              <Tooltip content={<ChartTooltip />} />
+              <Tooltip
+                formatter={(v, name) => [`${v}%`, name]}
+                contentStyle={{ background: "#FFFFFF", border: "1px solid var(--border)", borderRadius: 6, fontSize: 12, boxShadow: "var(--shadow-md)" }}
+              />
+              <Legend
+                verticalAlign="top"
+                align="right"
+                wrapperStyle={{ paddingBottom: 8, fontSize: 11.5 }}
+              />
               {CANONICAL_LABELS.map(label => (
                 <Bar
                   key={label}
