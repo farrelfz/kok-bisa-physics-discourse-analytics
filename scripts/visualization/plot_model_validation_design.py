@@ -63,14 +63,8 @@ ax.spines['right'].set_visible(False)
 ax.spines['left'].set_color('#64748B')
 ax.spines['bottom'].set_color('#64748B')
 
-# Annotation for peak checkpoint
-ax.annotate("Optimal Checkpoint\n(Macro F1 = 97.40%)", xy=(5, 0.974), xytext=(3.4, 0.86),
-            arrowprops=dict(facecolor='#0F172A', edgecolor='#0F172A', arrowstyle='->', lw=1.3),
-            fontsize=8.8, fontweight='bold', color='#065F46',
-            bbox=dict(boxstyle='round,pad=0.4', facecolor='#ECFDF5', edgecolor='#10B981', lw=1.0))
-
 # Legend
-ax.legend(loc='lower right', frameon=True, facecolor='#FFFFFF', edgecolor='#CBD5E1', fontsize=9.0)
+ax.legend(loc='lower right', frameon=True, facecolor='#FFFFFF', edgecolor='#CBD5E1', fontsize=9.2)
 
 plt.tight_layout()
 
