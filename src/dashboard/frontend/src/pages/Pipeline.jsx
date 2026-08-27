@@ -156,6 +156,90 @@ export default function Pipeline() {
           </div>
         </div>
       </div>
+
+      {/* Data Funnel & Corpus Provenance Section */}
+      <div className="card" style={{ padding: '22px 24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
+          <div>
+            <div className="card-title" style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Database size={16} style={{ color: 'var(--brand)' }} />
+              Corpus Data Funnel & Provenance Pipeline
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text3)', marginTop: 2 }}>
+              Transparent record transition from raw API harvesting to dense vector embedding and gold annotation splits
+            </div>
+          </div>
+          <span className="tag tag-brand" style={{ fontSize: 11 }}>
+            Zero-Ambiguity Data Provenance
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
+          {/* Stage 1 */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', borderTop: '3px solid #2563EB' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#2563EB', textTransform: 'uppercase', letterSpacing: '.05em' }}>
+              Stage 1: Raw Harvesting
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text1)', fontFamily: 'JetBrains Mono', margin: '4px 0' }}>
+              202,429
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', fontWeight: 600, marginBottom: 4 }}>
+              Raw YouTube API Scrapes
+            </div>
+            <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.45 }}>
+              116,459 top-level comments + 85,970 threaded replies extracted across 35 public science videos.
+            </div>
+          </div>
+
+          {/* Stage 2 */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', borderTop: '3px solid #EF4444' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#EF4444', textTransform: 'uppercase', letterSpacing: '.05em' }}>
+              Stage 2: Clean Corpus
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text1)', fontFamily: 'JetBrains Mono', margin: '4px 0' }}>
+              199,855
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', fontWeight: 600, marginBottom: 4 }}>
+              Spam-Pruned Clean Records
+            </div>
+            <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.45 }}>
+              2,574 promotional spam, bot repetition, and gambling links removed (<code>comments_processed.parquet</code>).
+            </div>
+          </div>
+
+          {/* Stage 3 */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', borderTop: '3px solid #8B5CF6' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#8B5CF6', textTransform: 'uppercase', letterSpacing: '.05em' }}>
+              Stage 3: Vectorized Subset
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text1)', fontFamily: 'JetBrains Mono', margin: '4px 0' }}>
+              136,587
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', fontWeight: 600, marginBottom: 4 }}>
+              High-Quality Dense Vectors
+            </div>
+            <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.45 }}>
+              Well-formed comments (&gt;3 tokens, high ID confidence) indexed with 384-dim embeddings (<code>comments_embeddings.npy</code>).
+            </div>
+          </div>
+
+          {/* Stage 4 */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', borderTop: '3px solid #10B981' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#10B981', textTransform: 'uppercase', letterSpacing: '.05em' }}>
+              Stage 4: Gold Benchmark Split
+            </div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text1)', fontFamily: 'JetBrains Mono', margin: '4px 0' }}>
+              10,500
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', fontWeight: 600, marginBottom: 4 }}>
+              Gold Stratified Annotations
+            </div>
+            <div style={{ fontSize: 11, color: 'var(--text3)', lineHeight: 1.45 }}>
+              Dual-annotated gold standard: Train (7,148), Validation (1,850), and Held-Out Test (1,502) across separate videos.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -237,14 +237,14 @@ export const api = {
   discourseAnalytics: (vid) =>
     req("/analytics/discourse", vid ? { video_id: vid } : {}, () => {
       const statsList = [
-        { label: "Question", count: 45738, pct: 22.59, avg_confidence: 0.9953, avg_len: 68.4, avg_likes: 2.82, color: "#3B82F6" },
-        { label: "Opinion", count: 140092, pct: 69.21, avg_confidence: 0.9956, avg_len: 84.1, avg_likes: 2.38, color: "#8B5CF6" },
-        { label: "Disagreement", count: 2559, pct: 1.26, avg_confidence: 0.9798, avg_len: 92.6, avg_likes: 1.63, color: "#EF4444" },
-        { label: "Correction", count: 874, pct: 0.43, avg_confidence: 0.9769, avg_len: 112.3, avg_likes: 2.91, color: "#F97316" },
-        { label: "Suggestion", count: 3090, pct: 1.53, avg_confidence: 0.9613, avg_len: 74.8, avg_likes: 6.65, color: "#14B8A6" },
-        { label: "Praise", count: 4484, pct: 2.22, avg_confidence: 0.9839, avg_len: 42.5, avg_likes: 5.24, color: "#EAB308" },
-        { label: "Agreement", count: 1177, pct: 0.58, avg_confidence: 0.9670, avg_len: 54.2, avg_likes: 2.94, color: "#22C55E" },
-        { label: "Experience", count: 4415, pct: 2.18, avg_confidence: 0.9856, avg_len: 135.0, avg_likes: 8.15, color: "#EC4899" },
+        { label: "Question", count: 45738, pct: 22.59, avg_confidence: 0.9953, avg_len: 68.4, avg_likes: 2.82, color: LABEL_COLORS.Question },
+        { label: "Opinion", count: 140092, pct: 69.21, avg_confidence: 0.9956, avg_len: 84.1, avg_likes: 2.38, color: LABEL_COLORS.Opinion },
+        { label: "Disagreement", count: 2559, pct: 1.26, avg_confidence: 0.9798, avg_len: 92.6, avg_likes: 1.63, color: LABEL_COLORS.Disagreement },
+        { label: "Correction", count: 874, pct: 0.43, avg_confidence: 0.9769, avg_len: 112.3, avg_likes: 2.91, color: LABEL_COLORS.Correction },
+        { label: "Suggestion", count: 3090, pct: 1.53, avg_confidence: 0.9613, avg_len: 74.8, avg_likes: 6.65, color: LABEL_COLORS.Suggestion },
+        { label: "Praise", count: 4484, pct: 2.22, avg_confidence: 0.9839, avg_len: 42.5, avg_likes: 5.24, color: LABEL_COLORS.Praise },
+        { label: "Agreement", count: 1177, pct: 0.58, avg_confidence: 0.9670, avg_len: 54.2, avg_likes: 2.94, color: LABEL_COLORS.Agreement },
+        { label: "Experience", count: 4415, pct: 2.18, avg_confidence: 0.9856, avg_len: 135.0, avg_likes: 8.15, color: LABEL_COLORS.Experience },
       ];
       return {
         stats: statsList,

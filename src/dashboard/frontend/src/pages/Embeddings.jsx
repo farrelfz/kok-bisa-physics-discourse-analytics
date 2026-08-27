@@ -321,6 +321,53 @@ export default function Embeddings() {
           )}
         </div>
       </div>
+
+      {/* Semantic Coordinate Interpretation & Data Provenance Guide */}
+      <div className="card" style={{ padding: '20px 22px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
+          <div className="card-title" style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <Info size={15} style={{ color: 'var(--brand)' }} />
+            Semantic Axes Interpretation & Data Funnel
+          </div>
+          <span className="tag" style={{ fontSize: 11 }}>
+            PCA Dimension Meaning Guide
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: 16 }}>
+          {/* PC1 Guide */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--brand-dark)', marginBottom: 4 }}>
+              ↔ Principal Component 1 (9.0% Variance)
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', lineHeight: 1.5 }}>
+              <strong>Left / Negative (−2.0):</strong> Deep theoretical inquiry, complex physics terminology (relativity, wormholes, space-time).<br/>
+              <strong>Right / Positive (+2.0):</strong> Short reactive comments, internet slang, quick affirmations (<em>"setuju"</em>, <em>"mantap"</em>).
+            </div>
+          </div>
+
+          {/* PC2 Guide */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#8B5CF6', marginBottom: 4 }}>
+              ↕ Principal Component 2 (4.1% Variance)
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', lineHeight: 1.5 }}>
+              <strong>Top / Positive (+2.0):</strong> Actionable directives, topic suggestions (<em>"bahas dong"</em>), personal narratives (<em>Experience</em>).<br/>
+              <strong>Bottom / Negative (−2.0):</strong> Philosophical reflections, existential thoughts, and temporal reflections (past/future).
+            </div>
+          </div>
+
+          {/* Provenance Note */}
+          <div style={{ padding: '14px 16px', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#10B981', marginBottom: 4 }}>
+              📊 Data Funnel Provenance
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text2)', lineHeight: 1.5 }}>
+              Sampled from <strong>136,587 well-formed vectorized comments</strong> (&gt;3 tokens, high ID confidence) derived from <strong>199,855 clean comments</strong> (after pruning 2,574 spam from 202,429 raw scrapes).
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

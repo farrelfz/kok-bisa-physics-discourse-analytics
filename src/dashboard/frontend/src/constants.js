@@ -5,14 +5,14 @@ export const CANONICAL_LABELS = [
 ];
 
 export const LABEL_COLORS = {
-  Question:     "#3B82F6",  // Blue
-  Opinion:      "#8B5CF6",  // Violet
-  Disagreement: "#EF4444",  // Red
-  Correction:   "#F97316",  // Orange
-  Suggestion:   "#14B8A6",  // Teal
-  Praise:       "#EAB308",  // Yellow/Amber
-  Agreement:    "#22C55E",  // Green
-  Experience:   "#EC4899",  // Pink
+  Opinion:      "#0B5CAB",  // Royal Blue
+  Question:     "#D92524",  // Vibrant Red
+  Praise:       "#F2721C",  // Orange
+  Experience:   "#E5AD12",  // Gold / Yellow
+  Suggestion:   "#2CA048",  // Forest Green
+  Disagreement: "#7B52A1",  // Purple
+  Agreement:    "#761E48",  // Maroon / Wine
+  Correction:   "#63666A",  // Slate Grey
 };
 
 export const LABEL_DESCRIPTIONS = {
