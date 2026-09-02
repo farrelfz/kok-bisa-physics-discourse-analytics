@@ -224,6 +224,31 @@ export default function AboutResearch() {
           </div>
         </div>
       </div>
+
+      {/* ── References ── */}
+      <div className="card">
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+          <BookOpen size={18} style={{ color: "var(--brand)" }} />
+          <span style={{ fontSize: 14.5, fontWeight: 700, color: "var(--text1)" }}>
+            References
+          </span>
+        </div>
+        <ul style={{ fontSize: 13, color: "var(--text2)", lineHeight: 1.6, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 8, margin: 0 }}>
+          <li>Aji, A. F., Winata, G. I., Koto, F., Cahyawijaya, S., Romadhony, A., Mahendra, R., Kurniawan, K., Moeljadi, D., Prasojo, R. E., Baldwin, T., Lau, J. H., & Ruder, S. (2022). One country, 700+ languages: NLP challenges for underrepresented languages and dialects in Indonesia. <i>Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</i>, 7226–7249. <a href="https://doi.org/10.18653/v1/2022.acl-long.500" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.18653/v1/2022.acl-long.500</a></li>
+          <li>Austin, J. L. (1962). <i>How to do things with words</i>. Oxford University Press.</li>
+          <li>Barik, A. M., Mahendra, R., & Adriani, M. (2019). Normalization of Indonesian-English code-mixed Twitter data. <i>Proceedings of the 5th Workshop on Noisy User-Generated Text (W-NUT 2019)</i>, 417–424. <a href="https://doi.org/10.18653/v1/D19-5554" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.18653/v1/D19-5554</a></li>
+          <li>Bucchi, M., & Trench, B. (Eds.). (2021). <i>Routledge handbook of public communication of science and technology</i> (3rd ed.). Routledge.</li>
+          <li>Cohen, J. (1960). A coefficient of agreement for nominal scales. <i>Educational and Psychological Measurement</i>, 20(1), 37–46. <a href="https://doi.org/10.1177/001316446002000104" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.1177/001316446002000104</a></li>
+          <li>Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. <i>Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)</i>, 4171–4186. <a href="https://doi.org/10.18653/v1/N19-1423" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.18653/v1/N19-1423</a></li>
+          <li>Dubovi, I., & Tabak, I. (2020). An empirical analysis of knowledge co-construction in YouTube comments. <i>Computers & Education</i>, 156, Article 103939. <a href="https://doi.org/10.1016/j.compedu.2020.103939" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.1016/j.compedu.2020.103939</a></li>
+          <li>Dubovi, I., & Tabak, I. (2021). Interactions between emotional and cognitive engagement with science on YouTube. <i>Public Understanding of Science</i>, 30(6), 759–776. <a href="https://doi.org/10.1177/0963662521990848" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.1177/0963662521990848</a></li>
+          <li>Fauzan, M. F. D. (2026). <i>Kok Bisa? physics discourse analytics: An interactive research companion for the Indonesian Public Discourse Corpus (IPDC)</i> [Interactive web application]. GitHub Pages. Kok Bisa? Physics Discourse Analytics</li>
+          <li>Hill, V. M., Grant, W. J., McMahon, M. L., & Singhal, I. S. (2022). How prominent science communicators on YouTube understand the impact of their work. <i>Frontiers in Communication</i>, 7, Article 1014477. <a href="https://doi.org/10.3389/fcomm.2022.1014477" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.3389/fcomm.2022.1014477</a></li>
+          <li>Koto, F., Rahimi, A., Lau, J. H., & Baldwin, T. (2020). IndoLEM and IndoBERT: A benchmark dataset and pre-trained language model for Indonesian NLP. <i>Proceedings of the 28th International Conference on Computational Linguistics</i>, 757–770. <a href="https://doi.org/10.18653/v1/2020.coling-main.66" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.18653/v1/2020.coling-main.66</a></li>
+          <li>Searle, J. R. (1969). <i>Speech acts: An essay in the philosophy of language</i>. Cambridge University Press.</li>
+          <li>Vosoughi, S., & Roy, D. (2016). Tweet acts: A speech act classifier for Twitter. <i>Proceedings of the International AAAI Conference on Web and Social Media</i>, 10(1), 711–714. <a href="https://doi.org/10.1609/icwsm.v10i1.14821" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-light)", textDecoration: "none" }}>https://doi.org/10.1609/icwsm.v10i1.14821</a></li>
+        </ul>
+      </div>
     </div>
   );
 }
