@@ -52,38 +52,62 @@ const DISCOURSE_DIST = Object.entries(dashboardStats.discourse_distribution || {
   color: LABEL_COLORS[label] || "#3B82F6",
 })).sort((a, b) => b.count - a.count);
 
-// Normalize 35 videos with structured discourse distributions
-const ENRICHED_VIDEOS = (Array.isArray(rawVideosEnriched) ? rawVideosEnriched : []).map((v) => {
-  const dist = {};
-  CANONICAL_LABELS.forEach((lbl) => {
-    dist[lbl] = v[lbl] || 0;
+// Helper to find video_id by partial title
+function findVideoByTitle(titleStr = "") {
+  if (!titleStr) return null;
+  const q = titleStr.toLowerCase().trim();
+  return PUBLIC_VIDEOS.find(v => {
+    const vt = (v.title || "").toLowerCase();
+    return vt.includes(q.slice(0, 15)) || q.includes(vt.slice(0, 15));
   });
+}
+
+// Normalize 35 videos with structured discourse distributions (both Array and Map compatible)
+const ENRICHED_VIDEOS = (Array.isArray(rawVideosEnriched) ? rawVideosEnriched : []).map((v) => {
+  const distArray = [];
+  const tot = v.total_comments || 1;
+  CANONICAL_LABELS.forEach((lbl) => {
+    const count = v[lbl] != null ? v[lbl] : 0;
+    distArray.push({
+      label: lbl,
+      count: count,
+      pct: Number(((count / tot) * 100).toFixed(1)),
+      color: LABEL_COLORS[lbl] || "#3B82F6",
+    });
+  });
+
   return {
     ...v,
-    discourse_distribution: dist,
+    discourse_distribution: distArray,
     dominant_discourse: v.dominant_discourse || "Opinion",
     mean_confidence: v.mean_confidence || 0.95,
+    mean_margin: v.mean_margin || 0.95,
   };
 });
 
 const ALL_POINTS = projectionData?.points || [];
 
-// ── Static Representatives ───────────────────────────────────────────────────
+// ── Static Representatives with valid video metadata ───────────────────────────
 const STATIC_REPRESENTATIVES = {};
 CANONICAL_LABELS.forEach((lbl) => {
-  STATIC_REPRESENTATIVES[lbl] = ALL_POINTS.filter((p) => p.act === lbl).slice(0, 5).map((p, idx) => ({
-    comment_id: p.id || `rep_${lbl}_${idx}`,
-    text: p.text,
-    discourse_label: p.act,
-    predicted_label: p.act,
-    predicted_discourse_act: p.act,
-    confidence: 0.98 - idx * 0.01,
-    margin: 0.95 - idx * 0.02,
-    likes: p.likes || 5 - idx,
-    like_count: p.likes || 5 - idx,
-    video_title: p.video || "Fisika Kok Bisa?",
-    video_id: "QK01ROEqJ1A",
-  }));
+  STATIC_REPRESENTATIVES[lbl] = ALL_POINTS.filter((p) => p.act === lbl).slice(0, 8).map((p, idx) => {
+    const matched = findVideoByTitle(p.video);
+    const vid = matched?.video_id || "QK01ROEqJ1A";
+    const vTitle = matched?.title || p.video || "Fisika Kok Bisa?";
+    return {
+      comment_id: p.id || `rep_${lbl}_${idx}`,
+      text: p.text,
+      discourse_label: p.act,
+      predicted_label: p.act,
+      predicted_discourse_act: p.act,
+      confidence: 0.98 - idx * 0.01,
+      margin: 0.95 - idx * 0.02,
+      likes: p.likes || 5 - idx,
+      like_count: p.likes || 5 - idx,
+      video_title: vTitle,
+      video_id: vid,
+    };
+  });
 });
 
 // ── Sample Ambiguous Comments & Scatter Points ─────────────────────────────────
@@ -99,7 +123,7 @@ const AMBIGUOUS_COMMENTS = [
     entropy: 0.68,
     like_count: 7,
     video_title: "Apa Itu Black Hole Sebenarnya?",
-    video_id: "impJiSfof9E",
+    video_id: "Tx87wEaDtxo",
   },
   {
     comment_id: "unc_2",
@@ -268,28 +292,54 @@ export const api = {
       const act = params.label || params.discourse_label || params.act || "";
       const vid = params.video_id || "";
       const search = (params.search || "").toLowerCase();
-      const page = params.page || 1;
-      const pageSize = params.page_size || 25;
+      const page = Number(params.page) || 1;
+      const pageSize = Number(params.page_size) || 25;
 
-      let filtered = ALL_POINTS.map((pt, idx) => ({
-        comment_id: pt.id || `c_${idx}`,
-        video_id: "QK01ROEqJ1A",
-        video_title: pt.video || "Fisika Kok Bisa?",
-        text: pt.text || "Komentar diskusi sains.",
-        discourse_label: pt.act || "Opinion",
-        predicted_label: pt.act || "Opinion",
-        predicted_discourse_act: pt.act || "Opinion",
-        confidence: 0.96,
-        margin: 0.92,
-        likes: pt.likes || 0,
-        like_count: pt.likes || 0,
-      }));
+      let filtered = ALL_POINTS.map((pt, idx) => {
+        const matched = findVideoByTitle(pt.video);
+        const vId = matched?.video_id || (vid || "QK01ROEqJ1A");
+        const vTitle = matched?.title || pt.video || "Fisika Kok Bisa?";
+        return {
+          comment_id: pt.id || `c_${idx}`,
+          video_id: vId,
+          video_title: vTitle,
+          text: pt.text || "Komentar diskusi sains.",
+          discourse_label: pt.act || "Opinion",
+          predicted_label: pt.act || "Opinion",
+          predicted_discourse_act: pt.act || "Opinion",
+          confidence: 0.96,
+          margin: 0.92,
+          likes: pt.likes || 0,
+          like_count: pt.likes || 0,
+        };
+      });
+
+      if (vid) {
+        filtered = filtered.filter((c) => c.video_id === vid);
+        // Fallback: if exact match is empty in sample subset, provide sample with that video metadata
+        if (filtered.length === 0) {
+          const matchedVid = PUBLIC_VIDEOS.find(v => v.video_id === vid);
+          filtered = ALL_POINTS.slice(0, 30).map((pt, idx) => ({
+            comment_id: `v_${vid}_${idx}`,
+            video_id: vid,
+            video_title: matchedVid?.title || "Video Sains Kok Bisa?",
+            text: pt.text || "Diskusi ilmiah pada video ini.",
+            discourse_label: pt.act || "Opinion",
+            predicted_label: pt.act || "Opinion",
+            predicted_discourse_act: pt.act || "Opinion",
+            confidence: 0.96,
+            margin: 0.92,
+            likes: pt.likes || 0,
+            like_count: pt.likes || 0,
+          }));
+        }
+      }
 
       if (act && act !== "ALL" && act !== "All") {
         filtered = filtered.filter((c) => c.predicted_label === act);
       }
       if (search) {
-        filtered = filtered.filter((c) => c.text.toLowerCase().includes(search));
+        filtered = filtered.filter((c) => (c.text || "").toLowerCase().includes(search));
       }
 
       const start = (page - 1) * pageSize;
@@ -336,19 +386,28 @@ export const api = {
 
   uncertainty: (p = {}) =>
     req("/uncertainty", p, (params) => {
-      const page = params?.page || 1;
-      const pageSize = params?.page_size || 25;
+      const page = Number(params?.page) || 1;
+      const pageSize = Number(params?.page_size) || 25;
+      const maxConf = params?.max_confidence != null ? Number(params.max_confidence) : 1.0;
+      const maxMargin = params?.max_margin != null ? Number(params.max_margin) : 1.0;
+
+      let filtered = AMBIGUOUS_COMMENTS.filter(c => (
+        c.confidence <= maxConf || c.margin <= maxMargin
+      ));
+      if (filtered.length === 0) filtered = AMBIGUOUS_COMMENTS;
+
       const start = (page - 1) * pageSize;
-      const paginated = AMBIGUOUS_COMMENTS.slice(start, start + pageSize);
+      const paginated = filtered.slice(start, start + pageSize);
 
       const labelCounts = {};
-      AMBIGUOUS_COMMENTS.forEach((c) => {
+      filtered.forEach((c) => {
         labelCounts[c.predicted_label] = (labelCounts[c.predicted_label] || 0) + 1;
       });
 
       const labelBreakdown = Object.entries(labelCounts).map(([label, count]) => ({
         label,
         count,
+        color: LABEL_COLORS[label] || "#888",
       }));
 
       return {
@@ -356,8 +415,8 @@ export const api = {
         items: paginated,
         scatter_sample: SCATTER_SAMPLE,
         label_breakdown: labelBreakdown,
-        total: AMBIGUOUS_COMMENTS.length,
-        total_pages: Math.max(1, Math.ceil(AMBIGUOUS_COMMENTS.length / pageSize)),
+        total: filtered.length,
+        total_pages: Math.max(1, Math.ceil(filtered.length / pageSize)),
       };
     }),
 

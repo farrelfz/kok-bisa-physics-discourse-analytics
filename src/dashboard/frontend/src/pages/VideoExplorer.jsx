@@ -200,7 +200,21 @@ function VideoDetail({ video, onClose, onPlay, navigateTo }) {
   }, [fetchComments]);
 
   const vd = detail || video;
-  const dist = vd.discourse_distribution || [];
+  const rawDist = vd?.discourse_distribution;
+  const dist = Array.isArray(rawDist)
+    ? rawDist
+    : (rawDist && typeof rawDist === "object")
+      ? CANONICAL_LABELS.map((lbl) => {
+          const count = rawDist[lbl] || 0;
+          const tot = vd?.total_comments || 1;
+          return {
+            label: lbl,
+            count: count,
+            pct: Number(((count / tot) * 100).toFixed(1)),
+            color: LABEL_COLORS[lbl] || "#3B82F6",
+          };
+        })
+      : [];
   const ytUrl = `https://www.youtube.com/watch?v=${video.video_id}`;
 
   return (

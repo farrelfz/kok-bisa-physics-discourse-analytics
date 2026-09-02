@@ -3,9 +3,9 @@
 ---
 
 > **Penulis / Authors:**  
-> Farrel Faiz Zuhdiar  
-> Program Studi Informatika, Fakultas Teknologi Informasi, Universitas XYZ, Indonesia  
-> ✉ farrel.faiz@email.com  
+> Muhamad Farrel Dava Fauzan
+> Program Pendidikan Fisika, Fakultas Teknologi Informasi, Universitas XYZ, Indonesia  
+> ✉ mfarreldava23@email.com  
 >
 > **Diterima / Received:** Agustus 2026  
 > **Diterbitkan / Published:** Agustus 2026  

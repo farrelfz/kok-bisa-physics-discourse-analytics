@@ -410,6 +410,48 @@ def get_video_discourse_matrix():
     result.sort(key=lambda x: x.get("Opinion", 0) + x.get("Question", 0), reverse=True)
     return {"data": result, "labels": CANONICAL_LABELS, "label_colors": LABEL_COLORS}
 
+# ── Analytics: Confidence Overview ───────────────────────────────────────────
+@app.get("/api/analytics/confidence-overview")
+def get_confidence_overview():
+    conn = get_db()
+    row = conn.execute("""
+        SELECT
+            AVG(confidence) as mean_confidence,
+            AVG(margin) as mean_margin,
+            MIN(confidence) as min_confidence,
+            MAX(confidence) as max_confidence,
+            COUNT(*) as total_count
+        FROM inference
+    """).fetchone()
+    
+    total = row[4] or 1
+    
+    # Calculate distribution bins
+    b90 = conn.execute("SELECT COUNT(*) FROM inference WHERE confidence >= 0.90").fetchone()[0]
+    b80 = conn.execute("SELECT COUNT(*) FROM inference WHERE confidence >= 0.80 AND confidence < 0.90").fetchone()[0]
+    b70 = conn.execute("SELECT COUNT(*) FROM inference WHERE confidence >= 0.70 AND confidence < 0.80").fetchone()[0]
+    b60 = conn.execute("SELECT COUNT(*) FROM inference WHERE confidence >= 0.60 AND confidence < 0.70").fetchone()[0]
+    blt = conn.execute("SELECT COUNT(*) FROM inference WHERE confidence < 0.60").fetchone()[0]
+    
+    distribution_bins = [
+        {"bin": "90–100%", "count": b90, "pct": round(b90 / total * 100, 1), "color": "#22C55E"},
+        {"bin": "80–90%", "count": b80, "pct": round(b80 / total * 100, 1), "color": "#3B82F6"},
+        {"bin": "70–80%", "count": b70, "pct": round(b70 / total * 100, 1), "color": "#EAB308"},
+        {"bin": "60–70%", "count": b60, "pct": round(b60 / total * 100, 1), "color": "#F97316"},
+        {"bin": "<60%", "count": blt, "pct": round(blt / total * 100, 1), "color": "#EF4444"},
+    ]
+    
+    return {
+        "mean_confidence": round(row[0] or 0, 4),
+        "mean_margin": round(row[1] or 0, 4),
+        "min_confidence": round(row[2] or 0, 4),
+        "max_confidence": round(row[3] or 0, 4),
+        "total_comments": total,
+        "high_confidence_pct": round(b90 / total * 100, 1),
+        "ambiguous_pct": round(blt / total * 100, 1),
+        "distribution_bins": distribution_bins,
+    }
+
 # ── Analytics: Confidence Histogram ──────────────────────────────────────────
 @app.get("/api/analytics/confidence-histogram")
 def get_confidence_histogram(label: Optional[str] = None, bins: int = 20):
