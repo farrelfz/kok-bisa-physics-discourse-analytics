@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // GitHub Pages SPA fallback: preserve the requested path and let index.html handle routing.
+      const path = window.location.pathname;
+      const query = window.location.search;
+      const hash = window.location.hash;
+      const base = '/kok-bisa-physics-discourse-analytics/';
+      const relative = path.startsWith(base) ? path.slice(base.length) : path.replace(/^\//, '');
+      window.location.replace(base + '?p=' + encodeURIComponent('/' + relative) + encodeURIComponent(query) + hash);
+    </script>
+    <title>Kok Bisa? — Physics Discourse Analytics</title>
+  </head>
+  <body>
+    <p>Loading application…</p>
+  </body>
+</html>
