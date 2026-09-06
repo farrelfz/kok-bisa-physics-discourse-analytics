@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -38,8 +38,17 @@ jobs:
       - name: Build React Dashboard
         working-directory: src/dashboard/frontend
         env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL || vars.VITE_API_URL || '' }}
+          VITE_BASE_PATH: /kok-bisa-physics-discourse-analytics/
+          VITE_API_URL: ${{ vars.VITE_API_URL || secrets.VITE_API_URL || '' }}
         run: npm run build
+
+      - name: Verify static build
+        working-directory: src/dashboard/frontend
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          grep -q '/kok-bisa-physics-discourse-analytics/' dist/index.html
+          echo "GitHub Pages build verified"
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
