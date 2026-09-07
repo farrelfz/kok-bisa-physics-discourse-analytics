@@ -127,7 +127,7 @@ function VideoCard({ video, onSelect, onPlay }) {
                 <span>Discourse Composition</span>
                 <span style={{ fontWeight: 700, color: LABEL_COLORS[video.dominant_discourse] }}>{video.dominant_discourse}</span>
               </div>
-              <DiscourseBar distribution={video.discourse_distribution} total={video.total_comments} height={6} />
+              <DiscourseBar distribution={video} total={video.total_comments} height={6} />
             </div>
           )}
 

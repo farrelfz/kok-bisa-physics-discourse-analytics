@@ -70,22 +70,15 @@ const ENRICHED_VIDEOS = (Array.isArray(rawVideosEnriched) ? rawVideosEnriched : 
   const tot = v.total_comments || 1;
   CANONICAL_LABELS.forEach((lbl) => {
     const count = v[lbl] != null ? v[lbl] : 0;
+    const pct = Number(((count / tot) * 100).toFixed(1));
     distArray.push({
       label: lbl,
       count: count,
-      pct: Number(((count / tot) * 100).toFixed(1)),
+      pct: pct,
       color: LABEL_COLORS[lbl] || "#3B82F6",
     });
+    v[`${lbl}_pct`] = pct;
   });
-
-  return {
-    ...v,
-    discourse_distribution: distArray,
-    dominant_discourse: v.dominant_discourse || "Opinion",
-    mean_confidence: v.mean_confidence || 0.95,
-    mean_margin: v.mean_margin || 0.95,
-  };
-});
 
 const ALL_POINTS = projectionData?.points || [];
 
@@ -114,23 +107,15 @@ async function loadFullCorpus() {
 // ── Static Representatives with valid video metadata ───────────────────────────
 const STATIC_REPRESENTATIVES = {};
 CANONICAL_LABELS.forEach((lbl) => {
-  STATIC_REPRESENTATIVES[lbl] = ALL_POINTS.filter((p) => p.act === lbl).slice(0, 8).map((p, idx) => {
-    const matched = findVideoByTitle(p.video);
-    const vid = matched?.video_id || "QK01ROEqJ1A";
-    const vTitle = matched?.title || p.video || "Fisika Kok Bisa?";
-    return {
-      comment_id: p.id || `rep_${lbl}_${idx}`,
-      text: p.text,
-      discourse_label: p.act,
-      predicted_label: p.act,
-      predicted_discourse_act: p.act,
-      confidence: 0.98 - idx * 0.01,
-      margin: 0.95 - idx * 0.02,
-      likes: p.likes || 5 - idx,
-      like_count: p.likes || 5 - idx,
-      video_title: vTitle,
-      video_id: vid,
-    };
+    const count = v[lbl] != null ? v[lbl] : 0;
+    const pct = Number(((count / tot) * 100).toFixed(1));
+    distArray.push({
+      label: lbl,
+      count: count,
+      pct: pct,
+      color: LABEL_COLORS[lbl] || "#3B82F6",
+    });
+    v[`${lbl}_pct`] = pct;
   });
 });
 
