@@ -306,28 +306,11 @@ export const api = {
       const page = Number(params.page) || 1;
       const pageSize = Number(params.page_size) || 25;
 
-      let filtered = fullCorpus.map((pt) => {
-        const matched = findVideoByTitle(pt.video_id) || ENRICHED_VIDEOS.find(v => v.video_id === pt.video_id);
-        const vTitle = matched?.title || "Video Sains Kok Bisa?";
-        return {
-          comment_id: pt.comment_id,
-          video_id: pt.video_id,
-          video_title: vTitle,
-          text: pt.text,
-          discourse_label: pt.predicted_label,
-          predicted_label: pt.predicted_label,
-          predicted_discourse_act: pt.predicted_label,
-          confidence: pt.confidence,
-          margin: pt.margin,
-          likes: pt.like_count,
-          like_count: pt.like_count,
-        };
-      });
+      let filtered = fullCorpus;
 
       if (vid) {
         filtered = filtered.filter((c) => c.video_id === vid);
-        }
-
+      }
       if (act && act !== "ALL" && act !== "All") {
         filtered = filtered.filter((c) => c.predicted_label === act);
       }
@@ -336,7 +319,18 @@ export const api = {
       }
 
       const start = (page - 1) * pageSize;
-      const paginated = filtered.slice(start, start + pageSize);
+      const paginatedRaw = filtered.slice(start, start + pageSize);
+
+      const paginated = paginatedRaw.map((pt) => {
+        const matched = ENRICHED_VIDEOS.find(v => v.video_id === pt.video_id);
+        return {
+          ...pt,
+          video_title: matched?.title || "Video Sains Kok Bisa?",
+          discourse_label: pt.predicted_label,
+          predicted_discourse_act: pt.predicted_label,
+          likes: pt.like_count,
+        };
+      });
 
       return {
         comments: paginated,
