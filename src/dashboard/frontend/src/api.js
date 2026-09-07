@@ -4,6 +4,7 @@
 import dashboardStats from "./assets/data/dashboard_stats.json";
 import rawVideosEnriched from "./assets/data/videos_enriched.json";
 import projectionData from "./assets/data/projection_sample.json";
+import PUBLIC_VIDEOS from "./assets/data/public_videos.json";
 import { LABEL_COLORS, CANONICAL_LABELS, EXPERIMENTS } from "./constants.js";
 
 const RAW_API = import.meta.env.VITE_API_URL || "";
@@ -56,7 +57,8 @@ const DISCOURSE_DIST = Object.entries(dashboardStats.discourse_distribution || {
 function findVideoByTitle(titleStr = "") {
   if (!titleStr) return null;
   const q = titleStr.toLowerCase().trim();
-  return PUBLIC_VIDEOS.find(v => {
+  const list = Array.isArray(PUBLIC_VIDEOS) ? PUBLIC_VIDEOS : [];
+  return list.find(v => {
     const vt = (v.title || "").toLowerCase();
     return vt.includes(q.slice(0, 15)) || q.includes(vt.slice(0, 15));
   });
@@ -318,7 +320,8 @@ export const api = {
         filtered = filtered.filter((c) => c.video_id === vid);
         // Fallback: if exact match is empty in sample subset, provide sample with that video metadata
         if (filtered.length === 0) {
-          const matchedVid = PUBLIC_VIDEOS.find(v => v.video_id === vid);
+          const videoList = Array.isArray(PUBLIC_VIDEOS) ? PUBLIC_VIDEOS : [];
+          const matchedVid = videoList.find(v => v.video_id === vid);
           filtered = ALL_POINTS.slice(0, 30).map((pt, idx) => ({
             comment_id: `v_${vid}_${idx}`,
             video_id: vid,

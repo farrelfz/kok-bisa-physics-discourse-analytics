@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import {
   LayoutDashboard, Video, BarChart3,
   BrainCircuit, BookOpen, Search, Menu, ChevronRight,
@@ -79,8 +79,25 @@ const PAGE_TITLES = {
   about:       "About Research & Copyright",
 };
 
+function getPageFromUrl() {
+  if (typeof window === "undefined") return "overview";
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const pParam = params.get("p") || params.get("page");
+    if (pParam) {
+      const clean = pParam.replace(/^\/+/, "").split("/")[0].split("?")[0];
+      if (clean && PAGES[clean]) return clean;
+    }
+    const hash = window.location.hash.replace(/^#\/?/, "").split("?")[0];
+    if (hash && PAGES[hash]) return hash;
+  } catch {
+    // ignore
+  }
+  return "overview";
+}
+
 export default function App() {
-  const [page, setPage]           = useState("overview");
+  const [page, setPage]           = useState(() => getPageFromUrl());
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [navVideo, setNavVideo]   = useState(null);
@@ -90,8 +107,25 @@ export default function App() {
     if (PAGES[pageId]) {
       setPage(pageId);
       setMobileOpen(false);
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("p");
+        url.searchParams.set("page", pageId);
+        window.history.pushState({ page: pageId }, "", url.toString());
+      } catch {
+        // ignore
+      }
     }
     if (extra.videoId) setNavVideo(extra.videoId);
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const currentPage = getPageFromUrl();
+      setPage(currentPage);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
   const sections = useMemo(() => [...new Set(NAV.map(n => n.section))], []);
@@ -198,10 +232,7 @@ export default function App() {
                     key={n.id}
                     type="button"
                     className={`nav-item ${isActive ? "active" : ""}`}
-                    onClick={() => {
-                      setPage(n.id);
-                      setMobileOpen(false);
-                    }}
+                    onClick={() => navigateTo(n.id)}
                     title={collapsed ? n.label : ""}
                   >
                     <Icon className="nav-item-icon" size={15} />

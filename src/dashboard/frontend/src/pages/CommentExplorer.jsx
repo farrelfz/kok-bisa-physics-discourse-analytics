@@ -4,7 +4,8 @@ import {
   ExternalLink, MessageSquare, Check, X, RefreshCw
 } from "lucide-react";
 import { api } from "../api.js";
-import { LABEL_COLORS, CANONICAL_LABELS, PUBLIC_VIDEOS } from "../constants.js";
+import PUBLIC_VIDEOS from "../assets/data/public_videos.json";
+import { LABEL_COLORS, CANONICAL_LABELS } from "../constants.js";
 import {
   LabelBadge, ConfBadge, MarginBadge, PageLoading, EmptyState,
   SectionHeader, Pagination, Button, Badge

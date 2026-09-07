@@ -1,4 +1,3 @@
-import publicVideos from "./assets/data/public_videos.json";
 // Canonical label list and metadata
 export const CANONICAL_LABELS = [
   "Question", "Opinion", "Disagreement", "Correction",
@@ -139,4 +138,3 @@ export const EXPERIMENTS = [
 
 // Video list — 35 public science education videos
 
-export const PUBLIC_VIDEOS = publicVideos;

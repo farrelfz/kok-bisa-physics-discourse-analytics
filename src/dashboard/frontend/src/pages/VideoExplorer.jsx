@@ -4,7 +4,8 @@ import {
   LayoutGrid, Table as TableIcon, Filter, Play, CheckCircle2, Eye, Sparkles
 } from "lucide-react";
 import { api } from "../api.js";
-import { LABEL_COLORS, CANONICAL_LABELS, PUBLIC_VIDEOS } from "../constants.js";
+import PUBLIC_VIDEOS from "../assets/data/public_videos.json";
+import { LABEL_COLORS, CANONICAL_LABELS } from "../constants.js";
 import {
   LabelBadge, ConfBadge, MarginBadge, PageLoading, EmptyState, SectionHeader,
   DiscourseBar, VideoPlayerModal, Button, Badge
