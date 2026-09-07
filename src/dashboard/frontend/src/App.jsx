@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Video, BarChart3,
   BrainCircuit, BookOpen, Search, Menu, ChevronRight,
   Info, Activity, X, Sparkles, Terminal, Compass, Globe,
-  AlertTriangle, Layers, ShieldCheck, Filter
+  AlertTriangle, Layers, ShieldCheck, Filter, Database, Cpu
 } from "lucide-react";
 
 import Overview           from "./pages/Overview.jsx";
@@ -352,20 +352,67 @@ export default function App() {
           </div>
 
           {/* ── Natural Scrollable Footer ── */}
-          <footer className="app-footer">
-            <div className="app-footer-left">
-              <span className="app-footer-brand">
-                © 2026 Indonesian Public Discourse Corpus (IPDC) Project
-              </span>
-              <span className="footer-dot">·</span>
-              <span>Deep Learning Indonesian Physics Discourse Analysis</span>
-              <span className="footer-dot">·</span>
-              <span>202,429+ Verified YouTube Comments</span>
-              <span className="footer-dot">·</span>
-              <span>8 Canonical Discourse Categories</span>
+          <footer className="app-footer" style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "20px 28px",
+            background: "var(--surface1)",
+            borderTop: "1px solid var(--border)",
+            fontSize: 12.5,
+            color: "var(--text3)",
+            marginTop: "auto",
+            flexWrap: "wrap",
+            gap: 16
+          }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <div style={{ fontWeight: 700, color: "var(--text1)", display: "flex", alignItems: "center", gap: 8 }}>
+                <ShieldCheck size={16} style={{ color: "#3B82F6" }} />
+                <span>Indonesian Public Discourse Corpus (IPDC) Project © 2026</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", color: "var(--text2)" }}>
+                <span style={{ fontWeight: 500 }}>Deep Learning Physics Discourse Analysis</span>
+                <span style={{ color: "var(--border)", height: 12, borderLeft: "2px solid var(--border)" }}></span>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <Database size={13} style={{ color: "var(--text3)" }} />
+                  <span>202,429+ Verified Comments</span>
+                </div>
+                <span style={{ color: "var(--border)", height: 12, borderLeft: "2px solid var(--border)" }}></span>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <Layers size={13} style={{ color: "var(--text3)" }} />
+                  <span>8 Canonical Categories</span>
+                </div>
+              </div>
             </div>
-            <div className="app-footer-right">
-              <code>indobenchmark/indobert-base-p1 (Macro F1: 97.40%)</code>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                gap: 8, 
+                background: "var(--surface3)", 
+                padding: "8px 14px", 
+                borderRadius: 8, 
+                border: "1px solid var(--border)",
+                boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
+              }}>
+                <Cpu size={15} style={{ color: "var(--brand-dark)" }} />
+                <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11.5, color: "var(--text1)", fontWeight: 600 }}>
+                  indobenchmark/indobert-base-p1
+                </span>
+                <span style={{ 
+                  background: "#22C55E22", 
+                  color: "#16A34A", 
+                  padding: "3px 8px", 
+                  borderRadius: 6, 
+                  fontWeight: 800, 
+                  fontSize: 10.5, 
+                  marginLeft: 4,
+                  border: "1px solid #22C55E44"
+                }}>
+                  97.40% F1
+                </span>
+              </div>
             </div>
           </footer>
         </div>
