@@ -31,67 +31,75 @@ const RESEARCH_QUESTIONS = [
 const PIPELINE_PHASES = [
   {
     step: "01",
-    title: "Corpus Ingestion & Playlist Audit",
+    title: "Scrape Playlist & Video Metadata",
     category: "Data Collection",
-    desc: "Extraction of all comment threads, replies, and metadata from 36 discovered videos in the official Kok Bisa? physics playlist via YouTube Data API v3. Exactly 35 accessible public videos were validated and ingested (1 private video was systematically excluded).",
-    outputs: ["202,429 Raw Comments", "35 Public Videos", "1,700,000+ Likes Tracked"],
+    desc: "Extraction of playlist metadata from the official Kok Bisa? physics playlist via YouTube Data API v3. Exactly 35 accessible public videos were validated and ingested (1 private video was systematically excluded).",
+    outputs: ["35 Public Videos", "View Counts & Timestamps"],
     badge: "YouTube Data API v3",
   },
   {
     step: "02",
-    title: "Text Normalization & Preservation",
-    category: "Preprocessing",
-    desc: "Unicode normalization, emoji preservation, Indonesian colloquialism handling, whitespace formatting, and subword tokenization via Byte-Pair Encoding. Comment texts were preserved verbatim to maintain linguistic authenticity without synthetic alteration.",
-    outputs: ["Zero Text Mutation", "Emoji & Sentiment Tokens Intact", "Max Sequence Length 256"],
-    badge: "Regex + HuggingFace Tokenizers",
+    title: "Fetch Full Comment Threads",
+    category: "Data Collection",
+    desc: "Extraction of all top-level comments and nested reply hierarchies across all 35 science videos. Comment texts were preserved verbatim to maintain linguistic authenticity without synthetic alteration.",
+    outputs: ["202,429 Raw Comments", "1,700,000+ Likes Tracked"],
+    badge: "API Pagination",
   },
   {
     step: "03",
-    title: "Discourse Taxonomy & Gold Annotation",
-    category: "Annotation",
-    desc: "Rigorous 8-act classification scheme grounded in Searle's Speech Act Theory and digital educational discourse literature. Dual independent manual annotation of 10,500 comments with adjudication rounds achieving high inter-annotator agreement (Cohen's Kappa κ = 0.88).",
-    outputs: ["10,500 Gold Annotations", "Cohen's κ = 0.88", "8 Canonical Speech Acts"],
-    badge: "Double-Blind Protocol",
+    title: "Fetch Subtitles & Transcripts",
+    category: "Multimodal Context",
+    desc: "Downloads timestamped closed captions to provide multimodal video context for science discussions, linking audience comments directly to the spoken scientific explanations.",
+    outputs: ["Video Transcripts", "Timestamped Captions"],
+    badge: "youtube-transcript-api",
   },
   {
     step: "04",
-    title: "Video-Stratified Dataset Splitting",
-    category: "Data Integrity",
-    desc: "Video-level group splitting ensuring that comments from the same video never appear across multiple splits. Grouped into Train (7,148 samples, 24 videos), Validation (1,850 samples, 5 videos), and Test (1,502 samples, 6 videos) to guarantee zero data leakage.",
-    outputs: ["Train: 7,148 comments", "Val: 1,850 comments", "Test: 1,502 comments"],
-    badge: "100% Zero Leakage",
+    title: "Data Cleaning & Normalization",
+    category: "Preprocessing",
+    desc: "Unicode normalization, emoji preservation, lowercase conversion, repetitive whitespace stripping, and empty comment filtering. Handled Indonesian colloquialisms while maintaining original sentiment.",
+    outputs: ["Zero Text Mutation", "Emoji Tokens Intact"],
+    badge: "RegEx & Pandas",
   },
   {
     step: "05",
-    title: "Transformer Fine-Tuning & Sweep",
-    category: "Modeling",
-    desc: "5-experiment benchmark comparing IndoBERT-base-p1 (124M params) and mDeBERTa-v3-base (86M params) across learning rates (1e-5 to 3e-5) and batch configurations with AdamW optimizer, linear warmup, and early stopping on validation loss.",
-    outputs: ["5 Verified Experiments", "AdamW + Linear Warmup", "124M Parameters Fine-Tuned"],
-    badge: "PyTorch + Transformers",
+    title: "Probabilistic Language Detection",
+    category: "Validation",
+    desc: "Classifies comments into 41 language codes and filters non-Indonesian texts using langdetect to ensure the corpus accurately represents the Indonesian Public Discourse.",
+    outputs: ["Indonesian Filtered", "41 Language Codes"],
+    badge: "langdetect",
   },
   {
     step: "06",
-    title: "Multi-Metric Model Evaluation",
-    category: "Benchmarking",
-    desc: "Model evaluation prioritizing Macro F1 to eliminate majority-class bias. The best IndoBERT checkpoint (Champion Model) achieved 97.40% Macro F1, 97.72% Weighted F1, 97.73% Accuracy, 97.98% Macro Precision, and 96.85% Macro Recall on held-out validation.",
-    outputs: ["Macro F1: 97.40%", "Accuracy: 97.73%", "Macro Precision: 97.98%"],
-    badge: "Macro F1 Primary",
+    title: "Rule-Based Spam Detection",
+    category: "Validation",
+    desc: "Filters promotional URLs, spam hashtags, repeated bot characters, gambling links, and timestamp spam to preserve the high quality of the scientific discourse corpus.",
+    outputs: ["2,574 Spam Removed", "Clean Corpus Export"],
+    badge: "Regex Filter Rules",
   },
   {
     step: "07",
-    title: "Full Corpus Inference & Scoring",
-    category: "Large-Scale NLP",
-    desc: "Batch inference across all 202,429 comments using the optimal checkpoint. Stored raw softmax logit distributions, Top-1 confidence scores, and Top-1 minus Top-2 margin deltas in Apache Parquet and DuckDB for ultra-fast analytical queries.",
-    outputs: ["202,429 Predicted Labels", "Full Logit Distributions", "Confidence & Margin Deltas"],
-    badge: "Batch GPU Inference",
+    title: "Discourse Taxonomy & Gold Splitting",
+    category: "Annotation & Splitting",
+    desc: "Rigorous 8-act classification scheme with dual independent manual annotation (10,500 comments, Cohen's κ = 0.88). Followed by video-level stratified dataset splitting into Train, Val, and Test to guarantee 100% zero data leakage.",
+    outputs: ["10,500 Gold Annotations", "Zero Leakage Splits"],
+    badge: "Sastrawi + Double-Blind",
   },
   {
     step: "08",
-    title: "Research Intelligence Platform",
-    category: "Analytics UI",
-    desc: "Interactive research interface built with React, Vite, and Recharts, connected to a high-performance FastAPI and DuckDB backend. Supports sub-second filtering across 200k+ rows, YouTube video embeds, confidence diagnostics, and CSV exports.",
-    outputs: ["Sub-50ms Query Latency", "35 Embedded Videos", "Interactive Discourse Tools"],
-    badge: "FastAPI + DuckDB + React",
+    title: "Deep Learning Discourse Inference",
+    category: "Modeling & Inference",
+    desc: "Transformer fine-tuning evaluating 5 experiments (IndoBERT vs mDeBERTa). The Champion Model (IndoBERT Base) achieved 97.40% Macro F1. Batch inference was then run across all 202,429 comments to store full logit distributions.",
+    outputs: ["Macro F1: 97.40%", "Full Logit Distributions"],
+    badge: "PyTorch + IndoBERT",
+  },
+  {
+    step: "09",
+    title: "Semantic Embeddings & Dashboard",
+    category: "Analytics Engine",
+    desc: "Generates 384-dim dense vectors (MiniLM) and outputs DuckDB / Parquet query tables. Powers the interactive React dashboard for sub-second filtering, PCA semantic space projection, and visual analytics.",
+    outputs: ["384-dim Dense Vectors", "Sub-50ms Query UI"],
+    badge: "DuckDB + React",
   },
 ];
 
@@ -173,19 +181,19 @@ export default function Methodology() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <div>
             <div className="card-title" style={{ marginBottom: 2 }}>
-              End-to-End Scientific Pipeline (8 Stages)
+              End-to-End Scientific Pipeline (9 Stages)
             </div>
             <div style={{ fontSize: 12, color: "var(--text3)" }}>
               Step-by-step reproducible workflow from raw API extraction to interactive intelligence
             </div>
           </div>
           <span style={{ fontSize: 11, color: "var(--text3)", fontFamily: "JetBrains Mono" }}>
-            Stage {activeStep + 1} of 8 Selected
+            Stage {activeStep + 1} of 9 Selected
           </span>
         </div>
 
         {/* Phase Step Selectors */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(8, 1fr)", gap: 6, marginBottom: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(9, 1fr)", gap: 6, marginBottom: 16 }}>
           {PIPELINE_PHASES.map((p, idx) => (
             <button
               key={p.step}
