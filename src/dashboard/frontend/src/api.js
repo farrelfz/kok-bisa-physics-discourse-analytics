@@ -89,6 +89,28 @@ const ENRICHED_VIDEOS = (Array.isArray(rawVideosEnriched) ? rawVideosEnriched : 
 
 const ALL_POINTS = projectionData?.points || [];
 
+let FULL_CORPUS = null;
+let FULL_CORPUS_PROMISE = null;
+
+async function loadFullCorpus() {
+  if (FULL_CORPUS) return FULL_CORPUS;
+  if (!FULL_CORPUS_PROMISE) {
+    const basePath = import.meta.env.BASE_URL || '/';
+    FULL_CORPUS_PROMISE = fetch(`${basePath}data/all_comments.json`)
+      .then(res => res.json())
+      .then(data => {
+        FULL_CORPUS = data;
+        return data;
+      })
+      .catch(err => {
+        console.error("Failed to load all_comments.json", err);
+        return [];
+      });
+  }
+  return FULL_CORPUS_PROMISE;
+}
+
+
 // ── Static Representatives with valid video metadata ───────────────────────────
 const STATIC_REPRESENTATIVES = {};
 CANONICAL_LABELS.forEach((lbl) => {
@@ -290,53 +312,36 @@ export const api = {
     api.representatives(mode),
 
   comments: (p = {}) =>
-    req("/comments", p, (params) => {
+    req("/comments", p, async (params) => {
+      const fullCorpus = await loadFullCorpus();
+
       const act = params.label || params.discourse_label || params.act || "";
       const vid = params.video_id || "";
       const search = (params.search || "").toLowerCase();
       const page = Number(params.page) || 1;
       const pageSize = Number(params.page_size) || 25;
 
-      let filtered = ALL_POINTS.map((pt, idx) => {
-        const matched = findVideoByTitle(pt.video);
-        const vId = matched?.video_id || (vid || "QK01ROEqJ1A");
-        const vTitle = matched?.title || pt.video || "Fisika Kok Bisa?";
+      let filtered = fullCorpus.map((pt) => {
+        const matched = findVideoByTitle(pt.video_id) || ENRICHED_VIDEOS.find(v => v.video_id === pt.video_id);
+        const vTitle = matched?.title || "Video Sains Kok Bisa?";
         return {
-          comment_id: pt.id || `c_${idx}`,
-          video_id: vId,
+          comment_id: pt.comment_id,
+          video_id: pt.video_id,
           video_title: vTitle,
-          text: pt.text || "Komentar diskusi sains.",
-          discourse_label: pt.act || "Opinion",
-          predicted_label: pt.act || "Opinion",
-          predicted_discourse_act: pt.act || "Opinion",
-          confidence: 0.96,
-          margin: 0.92,
-          likes: pt.likes || 0,
-          like_count: pt.likes || 0,
+          text: pt.text,
+          discourse_label: pt.predicted_label,
+          predicted_label: pt.predicted_label,
+          predicted_discourse_act: pt.predicted_label,
+          confidence: pt.confidence,
+          margin: pt.margin,
+          likes: pt.like_count,
+          like_count: pt.like_count,
         };
       });
 
       if (vid) {
         filtered = filtered.filter((c) => c.video_id === vid);
-        // Fallback: if exact match is empty in sample subset, provide sample with that video metadata
-        if (filtered.length === 0) {
-          const videoList = Array.isArray(PUBLIC_VIDEOS) ? PUBLIC_VIDEOS : [];
-          const matchedVid = videoList.find(v => v.video_id === vid);
-          filtered = ALL_POINTS.slice(0, 30).map((pt, idx) => ({
-            comment_id: `v_${vid}_${idx}`,
-            video_id: vid,
-            video_title: matchedVid?.title || "Video Sains Kok Bisa?",
-            text: pt.text || "Diskusi ilmiah pada video ini.",
-            discourse_label: pt.act || "Opinion",
-            predicted_label: pt.act || "Opinion",
-            predicted_discourse_act: pt.act || "Opinion",
-            confidence: 0.96,
-            margin: 0.92,
-            likes: pt.likes || 0,
-            like_count: pt.likes || 0,
-          }));
         }
-      }
 
       if (act && act !== "ALL" && act !== "All") {
         filtered = filtered.filter((c) => c.predicted_label === act);
