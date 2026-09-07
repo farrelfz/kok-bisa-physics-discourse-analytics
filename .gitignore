@@ -64,3 +64,16 @@ Thumbs.db
 .idea/
 .vscode/
 .codegraph/
+
+# Ignored Data & Intermediate Outputs
+data/annotated/gold_standard_10k_sample.csv
+data/annotated/gold_standard_10k_pass_a.csv
+data/annotated/gold_standard_10k_final.csv
+reports/annotation_pilot.csv
+data/processed/projection_sample.json
+
+# Ignore intermediate parquets from now on
+data/corpus/corpus.parquet
+data/processed/comments_processed.parquet
+data/processed/comments_analyzed.parquet
+data/annotated/comments_annotated.parquet
